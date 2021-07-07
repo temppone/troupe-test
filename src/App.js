@@ -1,19 +1,25 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Loading from "./components/Loading"
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { GlobalStyle } from './global';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './shared/theme';
+import Loading from './components/Loading';
 
-const Home = lazy(() => import("./Pages/Home"));
+const Home = lazy(() => import('./pages/Home'));
 
 function App() {
   return (
     <Suspense fallback={<Loading />}>
-      <Router>
-        <Routes path="/">
-          <Route>
-            <Home />
-          </Route>
-        </Routes>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router>
+          <Routes path='/'>
+            <Route>
+              <Home />
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </Suspense>
   );
 }
