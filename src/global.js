@@ -24,11 +24,11 @@ export const GlobalStyle = createGlobalStyle`
 
   a{
   text-decoration: none;
-  color: ${({ theme }) => theme.primaryLight};
+  color: ${({ theme }) => theme.colors.primaryLight};
   }
 
   a:hover{
-    color: ${({ theme }) => theme.secundaryLight};
+    color: ${({ theme }) => theme.colors.secundaryLight};
   }
 
   html, body, #root{
@@ -37,25 +37,25 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 10px;
-    background: ${({ theme }) => theme.primaryDark};
-    color: ${({ theme }) => theme.primaryLight};
+    font-size: 12px;
+    background: ${({ theme }) => theme.colors.primaryDark};
+    color: ${({ theme }) => theme.colors.primaryLight};
     font-family: 'Roboto', sans-serif;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.xs}){
-      font-size: 12px;
-    }
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}){
       font-size: 14px;
     }
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}){
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}){
       font-size: 16px;
     }
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}){
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}){
       font-size: 18px;
     }
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.xl}){
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}){
       font-size: 20px;
+    }
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.xl}){
+      font-size: 22px;
     }
   } 
 `;

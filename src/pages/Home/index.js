@@ -1,14 +1,26 @@
-import React from 'react';
-import { HomeContainer } from './styles';
+import React, { useContext } from 'react';
+import Input from '../../components/Input';
+import { FlexContainer } from '../../shared/flexContainer';
 
 const Home = () => {
+  const { userLogin } = useContext(useContext);
+
   return (
-    <HomeContainer>
-      Dolore occaecat consequat mollit fugiat velit Lorem ipsum ipsum. Lorem
-      fugiat magna ea et ea exercitation quis qui non officia tempor elit.
-      Adipisicing officia nostrud reprehenderit in nisi Lorem ad officia aute
-      qui voluptate reprehenderit dolore.
-    </HomeContainer>
+    <FlexContainer
+      flexDirection='column'
+      justifyContent='center'
+      alignItems='center'
+      alignContent='center'
+      margin='0 auto'
+      padding='1rem'
+    >
+      <img
+        width='80%'
+        src='/imgs/homeImg.svg'
+        alt='Imagem da página inicial'
+      ></img>
+      <Input label='email' name='email' required='true'></Input>
+    </FlexContainer>
   );
 };
 
