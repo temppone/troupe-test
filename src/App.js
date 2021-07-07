@@ -5,9 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './shared/theme';
 import Loading from './components/Loading';
 
-const Home = lazy(() => import('./pages/Home'));
-const Header = lazy(() => import('./components/Header'));
 const Footer = lazy(() => import('./components/Footer'));
+const Home = lazy(() => import('./pages/Home'));
 
 function App() {
   return (
@@ -15,9 +14,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Router>
-          <Header />
 
-          <Routes path='/'>
+          <Routes path='/*'>
             <Route>
               <Home />
             </Route>

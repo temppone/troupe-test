@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlexContainer } from '../../shared/flexContainer';
-import { InputLabel, InputBox } from './style';
+import { InputLabel, InputBox } from './styles';
 
-const Input = ({ name, label, register, inputError, required, ...props }) => {
+const Input = ({ name, type, label, register, inputError, ...props }) => {
   return (
     <FlexContainer
       flexDirection='column'
@@ -13,7 +13,7 @@ const Input = ({ name, label, register, inputError, required, ...props }) => {
       <InputBox
         name={name}
         inputError={inputError}
-        {...register(`${name}`, { required: { required } })}
+        // {...register(`${name}`, { required: { required } })}
       />
     </FlexContainer>
   );
