@@ -9,6 +9,14 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
   };
 
   return (
