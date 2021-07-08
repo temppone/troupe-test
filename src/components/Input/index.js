@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlexContainer } from '../../shared/flexContainer';
 import { InputLabel, InputBox } from './styles';
+import { useToasts } from 'react-toast-notifications';
 
-const Input = ({
-  name,
-  label,
-  register,
-  inputError,
-  required,
-  ...props
-}) => {
+const Input = ({ name, label, register, inputError, required, ...props }) => {
+  const { addToast } = useToasts();
+  const [toastError, setToastError] = useState();
+
+  if (inputError) {
+    setToastError(addToast('Entrando...', { appearance: 'success' }));
+  }
+
   return (
     <FlexContainer
       flexDirection="column"
@@ -20,9 +21,10 @@ const Input = ({
       <InputBox
         name={name}
         inputError={inputError}
-        {...register(`${name}`, { required: {required} })}
+        {...register(`${name}`, { required: { required } })}
+        {...props}
       />
-      <p>{inputError}</p>
+      <p>{inputError ? inputError && toastError : null}</p>
     </FlexContainer>
   );
 };

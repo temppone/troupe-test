@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { LoginForm, LoginSection } from './styles';
 import Input from '../Input';
 import Button from '../Button';
@@ -7,12 +8,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
-
-import Toast from '../Toast';
+import { useToasts } from 'react-toast-notifications';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { addToast } = useToasts();
 
   yup.setLocale(ptForm);
 
@@ -29,21 +30,19 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  console.log(errors);
-
   const loginSubmit = (login) => {
-    console.log(login);
+    if (login) {
+      addToast('Entrando...', { appearance: 'success' });
+    }
   };
 
   return (
     <LoginSection>
-      <Toast content="TA FUNCIONANDO" appearance="success" autoDismiss="true" />
-
       <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
-          type="text"
           name="email"
-          label="email"
+          label="Email"
+          type="text"
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           register={register}
@@ -52,15 +51,16 @@ const Login = () => {
         />
 
         <Input
-          type="text"
           name="password"
-          label="password"
+          label="Senha"
+          type="password"
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           register={register}
           required={true}
           inputError={errors.password?.message}
         />
+
         <Button buttonName="entrar" />
       </LoginForm>
     </LoginSection>
