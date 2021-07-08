@@ -5,15 +5,18 @@ import Button from '../Button';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  yup.setLocale(ptForm);
+
   const schema = yup.object().shape({
-    email: yup.string().email().required('campo necessário'),
-    password: yup.string().min(4).required('campo necessário'),
+    email: yup.string().email().required(),
+    password: yup.string().min(4).required('O campo é obrigatório'),
   });
 
   const {
@@ -24,10 +27,13 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
+  console.log(errors);
+
   const loginSubmit = (login) => {
     if (errors) {
-      console.log(errors);
-      console.log(login)
+      console.log(errors.email);
+      console.log(errors.o);
+      console.log(login);
     } else {
       console.log(login);
       console.log(email, password);
@@ -44,7 +50,10 @@ const Login = () => {
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           register={register}
+          required={true}
+          inputError={errors.email?.message}
         />
+
         <Input
           type="text"
           name="password"
@@ -52,6 +61,8 @@ const Login = () => {
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           register={register}
+          required={true}
+          inputError={errors.password?.message}
         />
         <Button buttonName="entrar" />
       </LoginForm>

@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+
+import { FooterItem } from './styles';
+import { FlexContainer } from '../../shared/flexContainer';
 
 const Footer = () => {
-    return (
-        <div>
-            Footer
-        </div>
-    )
-}
+  return (
+    <FlexContainer flexDirection="row" padding="1rem" justifyContent="center">
+      <FooterItem>&copy; 2021 | Todos os direitos reservados.</FooterItem>
+    </FlexContainer>
+  );
+};
 
-export default Footer
+export default Footer;
