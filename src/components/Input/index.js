@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { FlexContainer } from '../../shared/flexContainer';
 import { InputLabel, InputBox } from './styles';
-import { useToasts } from 'react-toast-notifications';
 
 const Input = ({ name, label, register, inputError, required, ...props }) => {
-  const { addToast } = useToasts();
-  const [toastError, setToastError] = useState();
-
-  if (inputError) {
-    setToastError(addToast('Entrando...', { appearance: 'success' }));
-  }
+  const notify = () => toast.success('Successfully created!');
 
   return (
     <FlexContainer
@@ -24,7 +18,9 @@ const Input = ({ name, label, register, inputError, required, ...props }) => {
         {...register(`${name}`, { required: { required } })}
         {...props}
       />
-      <p>{inputError ? inputError && toastError : null}</p>
+      <p>{inputError}</p>
+
+      {notify}
     </FlexContainer>
   );
 };

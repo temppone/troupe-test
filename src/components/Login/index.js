@@ -8,12 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
-import { useToasts } from 'react-toast-notifications';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { addToast } = useToasts();
 
   yup.setLocale(ptForm);
 
@@ -31,9 +29,7 @@ const Login = () => {
   });
 
   const loginSubmit = (login) => {
-    if (login) {
-      addToast('Entrando...', { appearance: 'success' });
-    }
+    console.log(login);
   };
 
   return (
