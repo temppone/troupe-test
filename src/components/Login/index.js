@@ -8,6 +8,8 @@ import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 
+import Toast from '../Toast';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,18 +32,13 @@ const Login = () => {
   console.log(errors);
 
   const loginSubmit = (login) => {
-    if (errors) {
-      console.log(errors.email);
-      console.log(errors.o);
-      console.log(login);
-    } else {
-      console.log(login);
-      console.log(email, password);
-    }
+    console.log(login);
   };
 
   return (
     <LoginSection>
+      <Toast content="TA FUNCIONANDO" appearance="success" autoDismiss="true" />
+
       <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
           type="text"

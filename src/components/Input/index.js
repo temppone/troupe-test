@@ -16,7 +16,7 @@ const Input = ({
       justifyContainer="center"
       padding="1rem"
     >
-      <InputLabel htmlFor={label}>{label}</InputLabel>
+      <InputLabel htmlFor={name}>{label}</InputLabel>
       <InputBox
         name={name}
         inputError={inputError}
