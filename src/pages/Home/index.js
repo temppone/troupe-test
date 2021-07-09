@@ -13,7 +13,6 @@ const Home = () => {
       padding="1rem"
       wdith="100%"
     >
-      <h1>Login</h1>
       <Login />
 
       {/* <Input label='email' name='email' required='true'></Input> */}

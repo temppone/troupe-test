@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { LoginForm } from './styles';
+import { LoginForm, LoginGreeting, LoginTitle } from './styles';
 import Input from '../Input';
 import Button from '../Button';
 
@@ -12,8 +12,6 @@ import toast from 'react-hot-toast';
 import { FlexContainer } from '../../shared/flexContainer';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [disabledButton, setDisabledButton] = useState(false);
 
   yup.setLocale(ptForm);
@@ -42,14 +40,19 @@ const Login = () => {
   };
 
   return (
-    <FlexContainer flexDirection="column" width="100%" alignItems="center" justifyContent="center">
+    <FlexContainer
+      flexDirection="column"
+      width="100%"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <LoginTitle>Login</LoginTitle>
+      <LoginGreeting>Bem vindo de volta!</LoginGreeting>
       <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
           name="email"
           label="Email"
           type="text"
-          value={email}
-          onChange={({ target }) => setEmail(target.value)}
           register={register}
           required={true}
           inputError={errors.email?.message}
@@ -59,14 +62,15 @@ const Login = () => {
           name="password"
           label="Senha"
           type="password"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
           register={register}
           required={true}
           inputError={errors.password?.message}
         />
 
-        <Button buttonName="entrar" disabled={disabledButton} />
+        <Button
+          buttonName="entrar"
+          disabled={disabledButton}
+        />
       </LoginForm>
     </FlexContainer>
   );

@@ -8,6 +8,9 @@ export const ButtonBox = styled.button`
   margin: 1rem;
   cursor: pointer;
   box-sizing: border-box;
+  width: ${({ width }) => width};
+  margin: ${({ margin }) => margin};
+
 
   :hover,
   :focus {

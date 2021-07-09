@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap');
   *{
     margin: 0;
     padding: 0;
@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 12px;
     background: ${({ theme }) => theme.colors.primaryDark};
     color: ${({ theme }) => theme.colors.primaryLight};
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.xs}){
       font-size: 14px;
