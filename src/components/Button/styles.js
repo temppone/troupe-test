@@ -12,7 +12,7 @@ export const ButtonBox = styled.button`
   :hover,
   :focus {
     box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.primaryLight};
-    transition: 0.1s;
+    transition: 0.2s;
   }
 
   :disabled {

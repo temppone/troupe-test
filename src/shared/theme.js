@@ -7,6 +7,8 @@ export const theme = {
     primaryLight: '#ffffff',
     secundaryLight: '#e6e6e6',
     tertiaryLight: '#d8d8d8',
+
+    warning: '#F64B4C', 
   },
 
   breakpoints: {
