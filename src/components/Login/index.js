@@ -5,11 +5,11 @@ import Input from '../Input';
 import Button from '../Button';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup'
+import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { FlexContainer } from '../../shared/flexContainer';
+import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
@@ -46,8 +46,9 @@ const Login = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <LoginTitle>Login</LoginTitle>
+      <PageTitle>Login</PageTitle>
       <LoginGreeting>Bem vindo de volta!</LoginGreeting>
+
       <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
           name="email"
@@ -67,10 +68,7 @@ const Login = () => {
           inputError={errors.password?.message}
         />
 
-        <Button
-          buttonName="Entrar"
-          disabled={disabledButton}
-        />
+        <Button buttonName="Entrar" disabled={disabledButton} />
       </LoginForm>
     </FlexContainer>
   );

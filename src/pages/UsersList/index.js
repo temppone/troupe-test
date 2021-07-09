@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { FlexContainer } from '../../shared/flexContainer';
+import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserItem, UserInfo } from './styles';
 
 const UsersList = () => {
   return (
     <FlexContainer>
+      <PageTitle>Usuários</PageTitle>
       <UserItem>
         <UserInfo></UserInfo>
       </UserItem>

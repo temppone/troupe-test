@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CreateTitle, CreateInfo, CreateForm } from './styles';
-import { FlexContainer } from '../../shared/flexContainer';
+import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Header from '../../components/Header';
 
 const UserCreate = () => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
@@ -62,7 +63,8 @@ const UserCreate = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <CreateTitle>Cadastro</CreateTitle>
+      <Header />
+      <PageTitle>Cadastro</PageTitle>
       <CreateInfo>Preencha o formulário</CreateInfo>
 
       <CreateForm action="" onSubmit={handleSubmit(userCreateSubmit)}>

@@ -30,3 +30,7 @@ export const FlexContainer = styled.div`
     max-width: 1380px;
   }
 `;
+
+export const PageTitle = styled.h1`
+  font-size: 2.2rem;
+`;
