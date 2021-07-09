@@ -12,6 +12,7 @@ export const FlexContainer = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background: ${({ background }) => background};
+  transition: 0.2s;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     max-width: 599px;

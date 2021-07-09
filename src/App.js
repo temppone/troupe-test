@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 
 const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
+const UserCreate = lazy(() => import('./pages/UserCreate'));
 
 function App() {
   return (
@@ -15,10 +16,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Router>
-          <Toaster/>
-          <Routes path="/*">
-            <Route>
+          <Toaster />
+          <Routes>
+            <Route path="/*">
               <Home />
+            </Route>
+            <Route path="/userCreate">
+              <UserCreate />
             </Route>
           </Routes>
           <Footer />

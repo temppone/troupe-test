@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const LoginTitle = styled.h2`
-  font-size: 1.8rem;
+export const LoginTitle = styled.h1`
+  font-size: 2.2rem;
 `;
 
 export const LoginGreeting = styled.p`
