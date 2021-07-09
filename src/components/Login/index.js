@@ -5,7 +5,7 @@ import Input from '../Input';
 import Button from '../Button';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import * as yup from 'yup'
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -18,7 +18,7 @@ const Login = () => {
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().min(4).required('O campo é obrigatório'),
+    password: yup.string().min(4).required(),
   });
 
   const {
@@ -68,7 +68,7 @@ const Login = () => {
         />
 
         <Button
-          buttonName="entrar"
+          buttonName="Entrar"
           disabled={disabledButton}
         />
       </LoginForm>
