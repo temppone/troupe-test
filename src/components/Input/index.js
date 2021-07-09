@@ -6,7 +6,7 @@ const Input = ({ name, label, register, inputError, required, ...props }) => {
     <FlexContainer
       flexDirection="column"
       justifyContente="center"
-      padding="1rem"
+      padding="0 1rem"
       height="10rem"
     >
       <InputLabel htmlFor={name}>{label}</InputLabel>

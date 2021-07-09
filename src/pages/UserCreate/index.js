@@ -25,7 +25,8 @@ const UserCreate = () => {
       )
       .required(),
     email: yup.string().email().required(),
-    endereco: {
+
+    endereco: yup.object({
       cep: yup
         .string()
         .matches('d{3}[.s]?d{3}[.s]?d{3}[-.s]?d{2}', 'Digite um CEP válido')
@@ -34,7 +35,7 @@ const UserCreate = () => {
       numero: yup.string().required(),
       bairro: yup.string().required(),
       cidade: yup.string().required(),
-    },
+    }),
   });
 
   const {
@@ -45,7 +46,15 @@ const UserCreate = () => {
     resolver: yupResolver(schema),
   });
 
-  const userCreateSubmit = (createdUser) => {};
+  console.log(handleSubmit);
+  console.log(register);
+  console.log(errors);
+
+  const userCreateSubmit = (createdUser) => {
+    setDisabledButtonCreate(true);
+
+    console.log(createdUser);
+  };
 
   return (
     <FlexContainer
@@ -63,7 +72,7 @@ const UserCreate = () => {
           type="text"
           register={register}
           required={true}
-          inputError={errors.nome?.message}
+          inputError={errors?.nome?.message}
         />
         <Input
           name="cpf"
@@ -71,7 +80,7 @@ const UserCreate = () => {
           type="text"
           register={register}
           required={true}
-          inputError={errors.cpf?.message}
+          inputError={errors?.cpf?.message}
         />
         <Input
           name="email"
@@ -79,48 +88,48 @@ const UserCreate = () => {
           type="text"
           register={register}
           required={true}
-          inputError={errors.email?.message}
+          inputError={errors?.email?.message}
         />
 
         <Input
-          name="cep"
+          name="endereco.cep"
           label="CEP"
           type="text"
           register={register}
           required={true}
-          inputError={errors.cep?.message}
+          inputError={errors?.endereco?.cep?.message}
         />
         <Input
-          name="rua"
+          name="endereco.rua"
           label="Rua"
           type="text"
           register={register}
           required={true}
-          inputError={errors.rua?.message}
+          inputError={errors?.endereco?.rua?.message}
         />
         <Input
-          name="numero"
+          name="endereco.numero"
           label="Numero"
           type="text"
           register={register}
           required={true}
-          inputError={errors.numero?.message}
+          inputError={errors?.endereco?.numero?.message}
         />
         <Input
-          name="bairro"
+          name="endereco.bairro"
           label="Bairro"
           type="text"
           register={register}
           required={true}
-          inputError={errors.bairro?.message}
+          inputError={errors?.endereco?.bairro?.message}
         />
         <Input
-          name="cidade"
+          name="endereco.cidade"
           label="Cidade"
           type="text"
           register={register}
           required={true}
-          inputError={errors.cidade?.message}
+          inputError={errors?.endereco?.cidade?.message}
         />
 
         <Button buttonName="Cadastrar" disabled={disabledButtonCreate} />
