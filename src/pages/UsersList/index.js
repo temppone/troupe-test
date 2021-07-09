@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { FlexContainer } from '../../shared/flexContainer';
 import { UserItem, UserInfo } from './styles';
 
-
-
 const UsersList = () => {
-    const [loading, setLoading] = useState('');
-
-
-  return <FlexContainer>
+  return (
+    <FlexContainer>
       <UserItem>
-          <UserInfo>
-              
-          </UserInfo>
+        <UserInfo></UserInfo>
       </UserItem>
-  </FlexContainer>;
+    </FlexContainer>
+  );
 };
 
 export default UsersList;
