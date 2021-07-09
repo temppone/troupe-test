@@ -9,6 +9,7 @@ import { Toaster } from 'react-hot-toast';
 const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
 const UserCreate = lazy(() => import('./pages/UserCreate'));
+const UsersList = lazy(() => import('./pages/UsersList'));
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
             <Route path="/userCreate">
               <UserCreate />
             </Route>
+            <Route path="/usersList">
+              <UsersList />
+            </Route>
+
           </Routes>
           <Footer />
         </Router>
