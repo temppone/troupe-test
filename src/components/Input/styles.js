@@ -20,12 +20,14 @@ export const InputBox = styled.input`
   :focus {
     border-color: ${({ inputError, theme }) =>
       inputError ? theme.colors.warning : theme.colors.secundaryLight};
+
     background: ${({ theme }) => theme.colors.primaryLight};
     box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.primaryLight};
   }
 `;
 
 export const InputWarning = styled.div`
+  color: ${({ theme }) => theme.colors.warning};
   width: 100%;
   padding: 0.5rem 0.2rem;
 `;
