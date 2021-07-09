@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { LoginForm, LoginSection } from './styles';
+import { LoginForm } from './styles';
 import Input from '../Input';
 import Button from '../Button';
 
@@ -8,10 +8,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { FlexContainer } from '../../shared/flexContainer';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [disabledButton, setDisabledButton] = useState(false);
 
   yup.setLocale(ptForm);
 
@@ -30,10 +33,16 @@ const Login = () => {
 
   const loginSubmit = (login) => {
     console.log(login);
+    if (login) {
+      setDisabledButton(true);
+      toast.success('Logando');
+    } else {
+      toast.error('Error');
+    }
   };
 
   return (
-    <LoginSection>
+    <FlexContainer flexDirection="column" width="100%" alignItems="center" justifyContent="center">
       <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
           name="email"
@@ -57,9 +66,9 @@ const Login = () => {
           inputError={errors.password?.message}
         />
 
-        <Button buttonName="entrar" />
+        <Button buttonName="entrar" disabled={disabledButton} />
       </LoginForm>
-    </LoginSection>
+    </FlexContainer>
   );
 };
 

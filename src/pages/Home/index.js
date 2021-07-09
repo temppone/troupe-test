@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Input from '../../components/Input';
 import Login from '../../components/Login';
 import { FlexContainer } from '../../shared/flexContainer';
 
@@ -11,15 +10,10 @@ const Home = () => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      alignContent="center"
-      margin="0 auto"
       padding="1rem"
+      wdith="100%"
     >
-      <img
-        width="80%"
-        src="/imgs/homeImg.svg"
-        alt="Imagem da página inicial"
-      ></img>
+      <h1>Login</h1>
       <Login />
 
       {/* <Input label='email' name='email' required='true'></Input> */}

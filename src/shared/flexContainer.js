@@ -10,6 +10,7 @@ export const FlexContainer = styled.div`
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
   width: ${({ width }) => width};
+  height: ${({ height }) => height};
   background: ${({ background }) => background};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
