@@ -21,22 +21,19 @@ const UserCreate = () => {
     cpf: yup
       .string()
       .matches(
-        '[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}',
+        '([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})',
         'Digite um CPF válido'
       )
       .required(),
     email: yup.string().email().required(),
-
-    endereco: yup.object({
-      cep: yup
-        .string()
-        .matches('d{3}[.s]?d{3}[.s]?d{3}[-.s]?d{2}', 'Digite um CEP válido')
-        .required(),
-      rua: yup.string().required(),
-      numero: yup.string().required(),
-      bairro: yup.string().required(),
-      cidade: yup.string().required(),
-    }),
+    cep: yup
+      .string()
+      .matches('([0-9]{5}-[0-9]{3})', 'Digite um CEP válido')
+      .required(),
+    rua: yup.string().required(),
+    numero: yup.string().required(),
+    bairro: yup.string().required(),
+    // cidade: yup.string().required(),
   });
 
   const {
@@ -74,7 +71,7 @@ const UserCreate = () => {
           type="text"
           register={register}
           required={true}
-          inputError={errors?.nome?.message}
+          inputError={errors.nome?.message}
         />
         <Input
           name="cpf"
@@ -82,7 +79,7 @@ const UserCreate = () => {
           type="text"
           register={register}
           required={true}
-          inputError={errors?.cpf?.message}
+          inputError={errors.cpf?.message}
         />
         <Input
           name="email"
@@ -90,48 +87,48 @@ const UserCreate = () => {
           type="text"
           register={register}
           required={true}
-          inputError={errors?.email?.message}
+          inputError={errors.email?.message}
         />
 
         <Input
-          name="endereco.cep"
+          name="cep"
           label="CEP"
           type="text"
           register={register}
           required={true}
-          inputError={errors?.endereco?.cep?.message}
+          inputError={errors.cep?.message}
         />
         <Input
-          name="endereco.rua"
+          name="rua"
           label="Rua"
           type="text"
           register={register}
           required={true}
-          inputError={errors?.endereco?.rua?.message}
+          inputError={errors.rua?.message}
         />
         <Input
-          name="endereco.numero"
+          name="numero"
           label="Numero"
           type="text"
           register={register}
           required={true}
-          inputError={errors?.endereco?.numero?.message}
+          inputError={errors.numero?.message}
         />
         <Input
-          name="endereco.bairro"
+          name="bairro"
           label="Bairro"
           type="text"
           register={register}
           required={true}
-          inputError={errors?.endereco?.bairro?.message}
+          inputError={errors.bairro?.message}
         />
         <Input
-          name="endereco.cidade"
+          name="cidade"
           label="Cidade"
           type="text"
           register={register}
           required={true}
-          inputError={errors?.endereco?.cidade?.message}
+          inputError={errors.cidade?.message}
         />
 
         <Button buttonName="Cadastrar" disabled={disabledButtonCreate} />

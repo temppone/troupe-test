@@ -13,8 +13,10 @@ export const InputBox = styled.input`
   background: ${({ theme }) => theme.colors.secundaryDark};
   transition: 0.2s;
   box-shadow: none;
-  border: 0.1rem solid ${({ inputError, theme }) =>
-    inputError ? theme.colors.warning : theme.colors.tertiaryDark};
+  color: ${({ theme }) => theme.colors.primaryLight};
+  border: 0.1rem solid
+    ${({ inputError, theme }) =>
+      inputError ? theme.colors.warning : theme.colors.tertiaryDark};
 
   :hover,
   :focus {

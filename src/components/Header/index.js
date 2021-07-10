@@ -6,7 +6,7 @@ import {ReactComponent as Logo} from '../../assets/logo.svg'
 const Header = () => {
   return (
     <HeaderNav>
-      <FlexContainer justifyContent="space-between" alignItems="center">
+      {/* <FlexContainer justifyContent="space-between" alignItems="center">
         <HeaderMenu>
           <HeaderMenuItem>
             <Link to="/lista">Lista</Link>
@@ -21,7 +21,7 @@ const Header = () => {
             <Logo />
           </HeaderLogo>
         </Link>
-      </FlexContainer>
+      </FlexContainer> */}
     </HeaderNav>
   );
 };

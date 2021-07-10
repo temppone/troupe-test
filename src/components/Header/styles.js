@@ -10,9 +10,7 @@ export const HeaderNav = styled.header`
   top: 0;
 `;
 
-export const HeaderLogo = styled.svg`
-  width: 10%;
-`;
+export const HeaderLogo = styled.div``;
 
 export const HeaderMenu = styled.ul``;
 export const HeaderMenuItem = styled.li``;
