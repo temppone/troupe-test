@@ -10,6 +10,7 @@ import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
+import { TOKEN_POST } from '../../api';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
@@ -30,6 +31,13 @@ const Login = () => {
   });
 
   const loginSubmit = (login) => {
+    const { url, options } = TOKEN_POST({
+      email: login.email,
+      password: login.password,
+    });
+
+    console.log(url, options);
+
     console.log(login);
     if (login) {
       setDisabledButton(true);
