@@ -21,7 +21,7 @@ const UserCreate = () => {
     cpf: yup
       .string()
       .matches(
-        '([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})',
+        '([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})',
         'Digite um CPF válido'
       )
       .required(),
@@ -33,7 +33,7 @@ const UserCreate = () => {
     rua: yup.string().required(),
     numero: yup.string().required(),
     bairro: yup.string().required(),
-    // cidade: yup.string().required(),
+    cidade: yup.string().required(),
   });
 
   const {
@@ -49,7 +49,14 @@ const UserCreate = () => {
   console.log(errors);
 
   const userCreateSubmit = (createdUser) => {
-    setDisabledButtonCreate(true);
+    console.log(createdUser);
+    if (createdUser) {
+      setDisabledButtonCreate(true);
+
+      toast.success('Cadastrando');
+    } else {
+      toast.error('Algo deu errado :(');
+    }
 
     console.log(createdUser);
   };

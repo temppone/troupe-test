@@ -35,7 +35,7 @@ const Login = () => {
       setDisabledButton(true);
       toast.success('Logando');
     } else {
-      toast.error('Error');
+      toast.error('Algo deu errado :(');
     }
   };
 
