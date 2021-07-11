@@ -1,3 +1,6 @@
+//TODO bug com o get da token de login com o servidor
+
+
 import React, { useState } from 'react';
 
 import { LoginHeader, LoginForm, LoginGreeting } from './styles';
@@ -47,6 +50,8 @@ const Login = () => {
 
       const response = await fetch(url, options);
       const json = await response.json();
+      // window.localStorage.setItem('token',json.token)
+
       console.log(json);
     } else {
       toast.error('Algo deu errado :(', {

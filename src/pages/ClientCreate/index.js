@@ -1,3 +1,5 @@
+//TODO bug com a criação de clientes com o servidor
+
 import React, { useState } from 'react';
 import { CreateHeader, CreateGreeting, CreateForm } from './styles';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
@@ -55,14 +57,18 @@ const ClientCreate = () => {
     console.log(createdUser);
     if (createdUser) {
       setDisabledButtonCreate(true);
-      toast.success('Cadastrando');
+      toast.success('Cadastrando', {
+        position: 'botton-center',
+      });
 
       const { url, options } = CLIENT_POST(createdUser);
       const response = await fetch(url, options);
 
       console.log(response);
     } else {
-      toast.error('Algo deu errado :(');
+      toast.error('Algo deu errado :(', {
+        position: 'botton-center',
+      });
     }
 
     console.log(createdUser);
