@@ -12,3 +12,12 @@ export const TOKEN_POST = (body) => {
     },
   };
 };
+
+export const CLIENTS_GET = (clientes) => {
+  return {
+    url: `${API_URL}/clientes`,
+    options: {
+      method: 'GET',
+    },
+  };
+};

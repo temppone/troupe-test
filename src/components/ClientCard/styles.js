@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FlexContainer } from '../../shared/flexContainer';
 
 export const ClientInfos = styled.div``;
 
