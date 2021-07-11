@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ClientCard from '../../components/ClientCard';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
-const ClientsList = () => {
+const ClientList = () => {
   //   const [loading, setLoading] = useState(false);
   //   const [errorMessage, setErrorMessage] = useState(false);
   //   const [data, setData] = useState('');
@@ -17,10 +17,11 @@ const ClientsList = () => {
   // }, [])
   //
   return (
-    <FlexContainer>
+    <FlexContainer flexDirection="column" justifyContent="center" padding="1rem">
+      <PageTitle>Clientes</PageTitle>
       <ClientCard />
     </FlexContainer>
   );
 };
 
-export default ClientsList;
+export default ClientList;

@@ -20,15 +20,15 @@
       }
     },
     {
-      "nome": "foo bar",
-      "cpf": "213.123.123-45",
-      "email": "foo_bar@email.com",
+      "nome": "Gustavo Tempone de Oliveira Faria",
+      "cpf": "101.945.806-29",
+      "email": "gtvtempone@gmail.com",
       "endereco": {
-        "cep": 13454000,
-        "rua": "rua talvez",
+        "cep": "36015-370",
+        "rua": "Rua Barão de Cataguases",
         "numero": 785,
-        "bairro": "bairro azul",
-        "cidade": "cidade eterna"
+        "bairro": "Santa Helena",
+        "cidade": "Juiz de Fora"
       }
     },
     {

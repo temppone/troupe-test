@@ -13,6 +13,7 @@ export const FlexContainer = styled.div`
   height: ${({ height }) => height};
   background: ${({ background }) => background};
   transition: 0.2s;
+  border-radius: ${({borderRadius}) => borderRadius};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     max-width: 599px;

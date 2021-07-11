@@ -37,25 +37,54 @@ const ClientCard = () => {
   if (loading) return <Loading />;
   if (data)
     return (
-      <FlexContainer
-        flexDirection="column"
-        background={theme.colors.secundaryDark}
-      >
+      <>
         {data?.map((client) => (
-          <ClientInfos>
-            <ClientInfosItem>
-              <ClientInfosField>Nome</ClientInfosField>
-              <ClientInfosData>{client.nome}</ClientInfosData>
-              <ClientInfosField>Nome</ClientInfosField>
-              <ClientInfosData>{client.nome}</ClientInfosData>
-              <ClientInfosField>Nome</ClientInfosField>
-              <ClientInfosData>{client.nome}</ClientInfosData>
-              <ClientInfosField>Nome</ClientInfosField>
-              <ClientInfosData>{client.nome}</ClientInfosData>
-            </ClientInfosItem>
-          </ClientInfos>
+          <FlexContainer
+            flexDirection="column"
+            justifyContetn="center"
+            background={theme.colors.secundaryDark}
+            margin="1rem"
+            borderRadius="0.9rem"
+          >
+            <ClientInfos>
+              <ClientInfosItem>
+                <ClientInfosField>Nome</ClientInfosField>
+                <ClientInfosData>{client.nome}</ClientInfosData>
+              </ClientInfosItem>
+              <ClientInfosItem>
+                <ClientInfosField>CPF</ClientInfosField>
+                <ClientInfosData>{client.cpf}</ClientInfosData>
+              </ClientInfosItem>
+              <ClientInfosItem>
+                <ClientInfosField>Email</ClientInfosField>
+                <ClientInfosData>{client.email}</ClientInfosData>
+              </ClientInfosItem>
+              <ClientInfosItem>
+                <ClientInfosField>Endereço</ClientInfosField>
+                <ClientInfosData>
+                  <b>CEP: </b>
+                  {client.endereco.cep}
+                </ClientInfosData>
+                <ClientInfosData>
+                  <b>Logradouro: </b>
+                  {client.endereco.rua}
+                </ClientInfosData>
+                <ClientInfosData>
+                  <b>Número: </b>
+                  {client.endereco.numero}
+                </ClientInfosData>
+                <ClientInfosData>
+                  <b>Bairro: </b>
+                  {client.endereco.bairro}
+                </ClientInfosData>
+                <ClientInfosData>
+                  <b>Cidade: {client.endereco.cidade}</b>
+                </ClientInfosData>
+              </ClientInfosItem>
+            </ClientInfos>
+          </FlexContainer>
         ))}
-      </FlexContainer>
+      </>
     );
   else return null;
 };
