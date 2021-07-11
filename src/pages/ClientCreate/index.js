@@ -26,14 +26,16 @@ const ClientCreate = () => {
       )
       .required(),
     email: yup.string().email().required(),
-    cep: yup
-      .string()
-      .matches('([0-9]{5}-[0-9]{3})', 'Digite um CEP válido')
-      .required(),
-    rua: yup.string().required(),
-    numero: yup.string().required(),
-    bairro: yup.string().required(),
-    cidade: yup.string().required(),
+    endereco: yup.object({
+      cep: yup
+        .string()
+        .matches('([0-9]{5}-[0-9]{3})', 'Digite um CEP válido')
+        .required(),
+      rua: yup.string().required(),
+      numero: yup.string().required(),
+      bairro: yup.string().required(),
+      cidade: yup.string().required(),
+    }),
   });
 
   const {
@@ -98,44 +100,44 @@ const ClientCreate = () => {
         />
 
         <Input
-          name="cep"
+          name="endereco.cep"
           label="CEP"
           type="text"
           register={register}
           required={true}
-          inputError={errors.cep?.message}
+          inputError={errors?.endereco?.cep?.message}
         />
         <Input
-          name="rua"
+          name="endereco.rua"
           label="Rua"
           type="text"
           register={register}
           required={true}
-          inputError={errors.rua?.message}
+          inputError={errors?.endereco?.rua?.message}
         />
         <Input
-          name="numero"
+          name="endereco.numero"
           label="Numero"
           type="text"
           register={register}
           required={true}
-          inputError={errors.numero?.message}
+          inputError={errors?.endereco?.numero?.message}
         />
         <Input
-          name="bairro"
+          name="endereco.bairro"
           label="Bairro"
           type="text"
           register={register}
           required={true}
-          inputError={errors.bairro?.message}
+          inputError={errors?.endereco?.bairro?.message}
         />
         <Input
-          name="cidade"
+          name="endereco.cidade"
           label="Cidade"
           type="text"
           register={register}
           required={true}
-          inputError={errors.cidade?.message}
+          inputError={errors?.endereco?.cidade?.message}
         />
 
         <Button buttonName="Cadastrar" disabled={disabledButtonCreate} />

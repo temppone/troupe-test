@@ -3,6 +3,7 @@ import { CLIENTS_GET } from '../../api';
 import useFetch from '../../Hooks/useFetch';
 import { FlexContainer } from '../../shared/flexContainer';
 import { theme } from '../../shared/theme';
+import Loading from '../Loading';
 import {
   ClientInfos,
   ClientInfosItem,
@@ -13,7 +14,7 @@ import {
 const ClientCard = () => {
   const { data, loading, error, request } = useFetch();
   console.log(useFetch());
-
+  console.log(data);
   useEffect(() => {
     console.log(request);
 
@@ -31,23 +32,32 @@ const ClientCard = () => {
     getDataClients();
   }, [request]);
 
-  // fetch('http://localhost:5000/clientes').then((response) => {
-  //   console.log(response.json());
-  // });
-
-  return (
-    <FlexContainer
-      flexDirection="column"
-      background={theme.colors.secundaryDark}
-    >
-      <ClientInfos>
-        <ClientInfosItem>
-          <ClientInfosField></ClientInfosField>
-          <ClientInfosData></ClientInfosData>
-        </ClientInfosItem>
-      </ClientInfos>
-    </FlexContainer>
-  );
+  console.log(data);
+  if (error) return <div>{error}</div>;
+  if (loading) return <Loading />;
+  if (data)
+    return (
+      <FlexContainer
+        flexDirection="column"
+        background={theme.colors.secundaryDark}
+      >
+        {data?.map((client) => (
+          <ClientInfos>
+            <ClientInfosItem>
+              <ClientInfosField>Nome</ClientInfosField>
+              <ClientInfosData>{client.nome}</ClientInfosData>
+              <ClientInfosField>Nome</ClientInfosField>
+              <ClientInfosData>{client.nome}</ClientInfosData>
+              <ClientInfosField>Nome</ClientInfosField>
+              <ClientInfosData>{client.nome}</ClientInfosData>
+              <ClientInfosField>Nome</ClientInfosField>
+              <ClientInfosData>{client.nome}</ClientInfosData>
+            </ClientInfosItem>
+          </ClientInfos>
+        ))}
+      </FlexContainer>
+    );
+  else return null;
 };
 
 export default ClientCard;
