@@ -30,7 +30,7 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const loginSubmit = (login) => {
+  const loginSubmit = async (login) => {
     const { url, options } = TOKEN_POST({
       email: login.email,
       password: login.password,
@@ -41,9 +41,17 @@ const Login = () => {
     console.log(login);
     if (login) {
       setDisabledButton(true);
-      toast.success('Logando');
+      toast.success('Logando', {
+        position: 'botton-center',
+      });
+
+      const response = await fetch(url, options);
+      const json = await response.json();
+      console.log(json);
     } else {
-      toast.error('Algo deu errado :(');
+      toast.error('Algo deu errado :(', {
+        position: 'botton-center',
+      });
     }
   };
 

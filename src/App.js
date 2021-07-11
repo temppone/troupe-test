@@ -19,13 +19,13 @@ function App() {
         <Router>
           <Toaster />
           <Routes>
-            <Route path="/*">
+            <Route path="/">
               <Home />
             </Route>
-            <Route path="/ClientCreate">
+            <Route path="/clientCreate">
               <ClientCreate />
             </Route>
-            <Route path="/ClientsList">
+            <Route path="/clientslist">
               <ClientsList />
             </Route>
 

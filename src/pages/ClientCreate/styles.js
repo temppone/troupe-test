@@ -15,6 +15,6 @@ export const CreateGreeting = styled.h1`
 export const CreateForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;  
   width: 100%;
 `;

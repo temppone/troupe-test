@@ -21,3 +21,16 @@ export const CLIENTS_GET = (clientes) => {
     },
   };
 };
+
+export const CLIENT_POST = (body) => {
+  return {
+    url: API_URL + '/clientes',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+};

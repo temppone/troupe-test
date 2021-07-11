@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
+import { CLIENT_POST } from '../../api';
 
 const ClientCreate = () => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
@@ -55,7 +56,11 @@ const ClientCreate = () => {
     if (createdUser) {
       setDisabledButtonCreate(true);
       toast.success('Cadastrando');
-      const r
+
+      const { url, options } = CLIENT_POST(createdUser);
+      const response = await fetch(url, options);
+
+      console.log(response);
     } else {
       toast.error('Algo deu errado :(');
     }
