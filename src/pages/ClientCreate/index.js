@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CreateTitle, CreateInfo, CreateForm } from './styles';
+import { CreateHeader, CreateGreeting, CreateForm } from './styles';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -50,12 +50,12 @@ const ClientCreate = () => {
   console.log(register);
   console.log(errors);
 
-  const clientCreateSubmit = (createdUser) => {
+  const clientCreateSubmit = async (createdUser) => {
     console.log(createdUser);
     if (createdUser) {
       setDisabledButtonCreate(true);
-
       toast.success('Cadastrando');
+      const r
     } else {
       toast.error('Algo deu errado :(');
     }
@@ -68,10 +68,14 @@ const ClientCreate = () => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      padding="1rem"
     >
       <Header />
-      <PageTitle>Cadastro</PageTitle>
-      <CreateInfo>Preencha o formulário</CreateInfo>
+
+      <CreateHeader>
+        <PageTitle>Cadastro</PageTitle>
+        <CreateGreeting>Preencha o formulário</CreateGreeting>
+      </CreateHeader>
 
       <CreateForm action="" onSubmit={handleSubmit(clientCreateSubmit)}>
         <Input

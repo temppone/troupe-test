@@ -9,6 +9,7 @@ import {
   ClientInfosItem,
   ClientInfosField,
   ClientInfosData,
+  BallDiv,
 } from './styles';
 
 const ClientCard = () => {
@@ -47,6 +48,7 @@ const ClientCard = () => {
             borderRadius="0.9rem"
           >
             <ClientInfos>
+              <BallDiv />
               <ClientInfosItem>
                 <ClientInfosField>Nome</ClientInfosField>
                 <ClientInfosData>{client.nome}</ClientInfosData>
@@ -78,7 +80,8 @@ const ClientCard = () => {
                   {client.endereco.bairro}
                 </ClientInfosData>
                 <ClientInfosData>
-                  <b>Cidade: {client.endereco.cidade}</b>
+                  <b>Cidade: </b>
+                  {client.endereco.cidade}
                 </ClientInfosData>
               </ClientInfosItem>
             </ClientInfos>

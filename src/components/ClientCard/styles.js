@@ -5,6 +5,15 @@ export const ClientInfos = styled.div`
   padding: 1rem;
 `;
 
+export const BallDiv = styled.div`
+  content:"";
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: ${({ theme }) => theme.colors.contrast};
+
+  `;
+
 export const ClientInfosItem = styled.div`
   padding: 1rem 0;
 `;
