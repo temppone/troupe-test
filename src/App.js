@@ -8,8 +8,8 @@ import { Toaster } from 'react-hot-toast';
 
 const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
-const UserCreate = lazy(() => import('./pages/UserCreate'));
-const UsersList = lazy(() => import('./pages/UsersList'));
+const ClientCreate = lazy(() => import('./pages/ClientCreate'));
+const ClientsList = lazy(() => import('./pages/ClientsList'));
 
 function App() {
   return (
@@ -22,11 +22,11 @@ function App() {
             <Route path="/*">
               <Home />
             </Route>
-            <Route path="/userCreate">
-              <UserCreate />
+            <Route path="/ClientCreate">
+              <ClientCreate />
             </Route>
-            <Route path="/usersList">
-              <UsersList />
+            <Route path="/ClientsList">
+              <ClientsList />
             </Route>
 
           </Routes>

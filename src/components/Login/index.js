@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { LoginForm, LoginGreeting, LoginTitle } from './styles';
+import { LoginHeader, LoginForm, LoginGreeting } from './styles';
 import Input from '../Input';
 import Button from '../Button';
 
@@ -54,9 +54,10 @@ const Login = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <PageTitle>Login</PageTitle>
-      <LoginGreeting>Bem vindo de volta!</LoginGreeting>
-
+      <LoginHeader>
+        <PageTitle>Faça seu login.</PageTitle>
+        <LoginGreeting>Olá de novo!</LoginGreeting>
+      </LoginHeader>
       <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
           name="email"

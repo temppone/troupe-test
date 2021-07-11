@@ -11,7 +11,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 
-const UserCreate = () => {
+const ClientCreate = () => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
 
   yup.setLocale(ptForm);
@@ -48,7 +48,7 @@ const UserCreate = () => {
   console.log(register);
   console.log(errors);
 
-  const userCreateSubmit = (createdUser) => {
+  const clientCreateSubmit = (createdUser) => {
     console.log(createdUser);
     if (createdUser) {
       setDisabledButtonCreate(true);
@@ -71,7 +71,7 @@ const UserCreate = () => {
       <PageTitle>Cadastro</PageTitle>
       <CreateInfo>Preencha o formulário</CreateInfo>
 
-      <CreateForm action="" onSubmit={handleSubmit(userCreateSubmit)}>
+      <CreateForm action="" onSubmit={handleSubmit(clientCreateSubmit)}>
         <Input
           name="nome"
           label="Nome"
@@ -144,4 +144,4 @@ const UserCreate = () => {
   );
 };
 
-export default UserCreate;
+export default ClientCreate;

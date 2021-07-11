@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Login from '../../components/Login';
 import { FlexContainer } from '../../shared/flexContainer';
-import { HomeImg } from './styles';
+import { ReactComponent as LoginSvg } from '../../assets/login.svg';
 
 const Home = () => {
   // const { userLogin } = useContext(useContext);
@@ -14,7 +14,7 @@ const Home = () => {
       padding="1rem"
       wdith="100%"
     >
-      <HomeImg src="/imgs/logo.svg" />
+      <LoginSvg width="20rem" height="15rem" />
       <Login />
 
       {/* <Input label='email' name='email' required='true'></Input> */}
