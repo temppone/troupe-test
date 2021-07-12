@@ -5,6 +5,10 @@ export const UserItem = styled.div`
   background: ${({ theme }) => theme.colors.secundaryDark};
 `;
 
+export const ClientsListGreeting = styled.div`
+
+
+`
 export const UserInfo = styled.div`
   padding: 1rem;
 `;

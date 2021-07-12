@@ -1,36 +1,19 @@
-//TODO bug com o get da token de login com o servidor
-
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
 import { LoginHeader, LoginForm, LoginGreeting } from './styles';
 import Input from '../Input';
 import Button from '../Button';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
-import { TOKEN_POST, USER_GET } from '../../api';
+import { UserContext } from '../../UserContext';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
-
-  useEffect(() => {
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      getUser(token);
-    }
-  }, []);
-
-  const getUser = async (token) => {
-    const { url, options } = USER_GET(token);
-    const response = await fetch(url, options);
-    const json = await response.json();
-
-    console.log(json);
-  };
+  const { userLogin } = useContext(UserContext);
+  console.log(userLogin, 'user login')
 
   yup.setLocale(ptForm);
 
@@ -48,13 +31,6 @@ const Login = () => {
   });
 
   const loginSubmit = async (login) => {
-    const { url, options } = TOKEN_POST({
-      email: login.email,
-      password: login.password,
-    });
-
-    console.log(url, options);
-
     console.log(login);
     if (login) {
       setDisabledButton(true);
@@ -62,15 +38,7 @@ const Login = () => {
         position: 'botton-center',
       });
 
-      const response = await fetch(url, options);
-      const json = await response.json();
-      console.log(json);
-      window.localStorage.setItem('token', "tokenString");
-
-      getUser(json.token);
-      console.log(json.token);
-
-      console.log(json);
+      userLogin(login.email, login.password);
     } else {
       toast.error('Algo deu errado :(', {
         position: 'botton-center',
