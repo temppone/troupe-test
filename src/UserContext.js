@@ -63,16 +63,14 @@ const UserStorage = ({ children }) => {
       }
       const response = await tokenRes.json();
 
-      if (response && response.length >= 1) {
+      if (response.length >= 1) {
         window.localStorage.setItem('token', '12072021');
         await getUser(response);
-        return;
       }
     } catch (err) {
-      setError(err.message);
       setLogin(false);
-    }
-    finally{
+      throw new Error('Login incorreto');
+    } finally {
       setLoading(false);
     }
   };

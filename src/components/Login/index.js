@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
+import Toast from '../Toast';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
@@ -35,11 +36,20 @@ const Login = () => {
 
   const loginSubmit = async (loginFormValues) => {
     if (loginFormValues) {
-      toast.promise(userLogin(loginFormValues), {
-        loading: 'Carregando...',
-        success: 'Entrando',
-        error: (err) => err.toString(),
-      });
+    //   <Toast
+    //     isPromise={true}
+    //     thePromise={userLogin(loginFormValues)}
+    //     errorMsg={(err) => err.toString}
+    //   />;
+      toast.promise(
+      userLogin(loginFormValues),
+      {
+      loading: 'Carregando...',
+      success: 'Entrando',
+      error: (err) => err.toString(),
+      },
+      { position: 'bottom-center' }
+      );
 
       return;
     }

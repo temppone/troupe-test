@@ -12,8 +12,18 @@ export const FlexContainer = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background: ${({ background }) => background};
-  transition: 0.2s;
-  border-radius: ${({borderRadius}) => borderRadius};
+
+  border-radius: ${({ borderRadius }) => borderRadius};
+
+  opacity: 0;
+  animation: animationIntro 0.3s forwards;
+
+  @keyframes animationIntro {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     max-width: 599px;
