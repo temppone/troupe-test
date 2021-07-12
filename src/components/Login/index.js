@@ -1,6 +1,5 @@
 //TODO bug com o get da token de login com o servidor
 
-
 import React, { useState } from 'react';
 
 import { LoginHeader, LoginForm, LoginGreeting } from './styles';
@@ -50,7 +49,8 @@ const Login = () => {
 
       const response = await fetch(url, options);
       const json = await response.json();
-      // window.localStorage.setItem('token',json.token)
+      console.log(json);
+      window.localStorage.setItem('token', json.token);
 
       console.log(json);
     } else {
@@ -71,7 +71,10 @@ const Login = () => {
         <PageTitle>Faça seu login.</PageTitle>
         <LoginGreeting>Olá de novo!</LoginGreeting>
       </LoginHeader>
-      <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
+      <LoginForm
+        action=""
+        onSubmit={handleSubmit(async (e) => await loginSubmit(e))}
+      >
         <Input
           name="email"
           label="Email"

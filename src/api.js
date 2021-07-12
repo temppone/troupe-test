@@ -26,7 +26,7 @@ export const CLIENT_POST = (body) => {
   return {
     url: API_URL + '/clientes',
     options: {
-      method: 'POST',
+      method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
       },

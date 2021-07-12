@@ -88,7 +88,10 @@ const ClientCreate = () => {
         <CreateGreeting>Preencha o formulário</CreateGreeting>
       </CreateHeader>
 
-      <CreateForm action="" onSubmit={handleSubmit(clientCreateSubmit)}>
+      <CreateForm
+        action=""
+        onSubmit={handleSubmit(async (e) => await clientCreateSubmit(e))}
+      >
         <Input
           name="nome"
           label="Nome"
