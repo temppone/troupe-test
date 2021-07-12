@@ -16,6 +16,18 @@ export const TOKEN_POST = (email, password) => {
   };
 };
 
+export const TOKEN_VALIDATE_POST = (token) => {
+  return {
+    url: API_URL + '/usuarios',
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer' + token,
+      },
+    },
+  };
+};
+
 export const CLIENTS_GET = (clientes) => {
   return {
     url: `${API_URL}/clientes`,

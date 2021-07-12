@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ClientCard from '../../components/ClientCard';
+import Header from '../../components/Header';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
 import { ClientsListGreeting } from './styles';
 
 const ClientList = () => {
   const { data } = useContext(UserContext);
-  
 
   useEffect(() => {
     const infiniteScroll = (event) => {
@@ -28,6 +28,7 @@ const ClientList = () => {
       justifyContent="center"
       padding="1rem"
     >
+      <Header />
       <PageTitle>Clientes</PageTitle>
       <ClientsListGreeting>
         Você está logado como: {data && 'Data'}
