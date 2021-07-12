@@ -12,8 +12,11 @@ import { UserContext } from '../../UserContext';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
-  const { userLogin } = useContext(UserContext);
-  console.log(userLogin, 'user login')
+  const { userLogin, login } = useContext(UserContext);
+
+  console.log(login, 'login');
+
+  console.log(userLogin, 'user login');
 
   yup.setLocale(ptForm);
 
@@ -30,20 +33,18 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const loginSubmit = async (login) => {
-    console.log(login);
-    if (login) {
-      setDisabledButton(true);
-      toast.success('Logando', {
-        position: 'botton-center',
+  const loginSubmit = async (loginFormValues) => {
+    if (loginFormValues) {
+      toast.promise(userLogin(loginFormValues), {
+        loading: 'Carregando...',
+        success: 'Entrando',
+        error: (err) => err.toString(),
       });
 
-      userLogin(login.email, login.password);
-    } else {
-      toast.error('Algo deu errado :(', {
-        position: 'botton-center',
-      });
+      return;
     }
+
+    setDisabledButton(false);
   };
 
   return (

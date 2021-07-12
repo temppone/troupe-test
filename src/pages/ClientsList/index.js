@@ -6,7 +6,7 @@ import { ClientsListGreeting } from './styles';
 
 const ClientList = () => {
   const { data } = useContext(UserContext);
-  console.log(data, 'data context')
+  
 
   useEffect(() => {
     const infiniteScroll = (event) => {
@@ -30,7 +30,7 @@ const ClientList = () => {
     >
       <PageTitle>Clientes</PageTitle>
       <ClientsListGreeting>
-        Você está logado como: {data?.nome}
+        Você está logado como: {data && 'Data'}
       </ClientsListGreeting>
       <ClientCard />
     </FlexContainer>

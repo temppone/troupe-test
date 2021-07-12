@@ -1,14 +1,17 @@
 export const API_URL = 'http://localhost:5000';
 
-export const TOKEN_POST = (body) => {
+//Teria que passar o body para pegar a token
+export const TOKEN_POST = (email, password) => {
   return {
-    url: API_URL + '/usuarios',
+    url: API_URL + `/usuarios?${new URLSearchParams({ email, password })}`,
     options: {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
+      // method: 'POST',
+      method: 'GET',
+
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
+      // body: JSON.stringify(body),
     },
   };
 };
@@ -43,7 +46,6 @@ export const USER_GET = (token) => {
       headers: {
         Authorization: 'Bearer' + token,
       },
-
     },
   };
 };
