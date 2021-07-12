@@ -12,87 +12,52 @@ import {
   BallDiv,
 } from './styles';
 
-const ClientCard = () => {
-  const { data, loading, error, request } = useFetch();
-  console.log(useFetch());
-  console.log(data);
-  useEffect(() => {
-    console.log(request);
+const ClientCard = ({
+  nome,
+  cpf,
+  email,
+  endereco }) => {
+  return (
 
-    const getDataClients = async () => {
-      console.log(request);
-
-      const { url, options } = CLIENTS_GET({ clientes: 0 });
-      console.log(request);
-
-      const { response, json } = await request(url, options);
-      console.log(request);
-
-      console.log(json);
-    };
-    getDataClients();
-  }, [request]);
-
-  console.log(data);
-  if (error) return <div>{error}</div>;
-  if (loading) return <Loading />;
-  if (data)
-    return (
-      <>
-        {data?.map((client) => (
-          <FlexContainer
-            flexDirection="row"
-            alignItems="flex-start"
-            justifyContent="flex-start"
-            background={theme.colors.secundaryDark}
-            margin="1rem"
-            padding="1rem 1rem"
-            borderRadius="0.9rem"
-            key={client.cpf}
-          >
-            <BallDiv />
-            <ClientInfos>
-              <ClientInfosItem>
-                <ClientInfosField>Nome</ClientInfosField>
-                <ClientInfosData>{client.nome}</ClientInfosData>
-              </ClientInfosItem>
-              <ClientInfosItem>
-                <ClientInfosField>CPF</ClientInfosField>
-                <ClientInfosData>{client.cpf}</ClientInfosData>
-              </ClientInfosItem>
-              <ClientInfosItem>
-                <ClientInfosField>Email</ClientInfosField>
-                <ClientInfosData>{client.email}</ClientInfosData>
-              </ClientInfosItem>
-              <ClientInfosItem>
-                <ClientInfosField>Endereço</ClientInfosField>
-                <ClientInfosData>
-                  <b>CEP: </b>
-                  {client.endereco?.cep}
-                </ClientInfosData>
-                <ClientInfosData>
-                  <b>Logradouro: </b>
-                  {client.endereco?.rua}
-                </ClientInfosData>
-                <ClientInfosData>
-                  <b>Número: </b>
-                  {client.endereco?.numero}
-                </ClientInfosData>
-                <ClientInfosData>
-                  <b>Bairro: </b>
-                  {client.endereco?.bairro}
-                </ClientInfosData>
-                <ClientInfosData>
-                  <b>Cidade: </b>
-                  {client.endereco?.cidade}
-                </ClientInfosData>
-              </ClientInfosItem>
-            </ClientInfos>
-          </FlexContainer>
-        ))}
-      </>
-    );
-  else return null;
+    <ClientInfos>
+      {console.log(nome)}
+      <ClientInfosItem>
+        <ClientInfosField>Nome</ClientInfosField>
+        <ClientInfosData>{nome}</ClientInfosData>
+      </ClientInfosItem>
+      <ClientInfosItem>
+        <ClientInfosField>CPF</ClientInfosField>
+        <ClientInfosData>{cpf}</ClientInfosData>
+      </ClientInfosItem>
+      <ClientInfosItem>
+        <ClientInfosField>Email</ClientInfosField>
+        <ClientInfosData>{email}</ClientInfosData>
+      </ClientInfosItem>
+      <ClientInfosItem>
+        <ClientInfosField>Endereço</ClientInfosField>
+        <ClientInfosData>
+          <b>CEP: </b>
+          {endereco?.cep}
+        </ClientInfosData>
+        <ClientInfosData>
+          <b>Logradouro: </b>
+          {endereco?.rua}
+        </ClientInfosData>
+        <ClientInfosData>
+          <b>Número: </b>
+          {endereco?.numero}
+        </ClientInfosData>
+        <ClientInfosData>
+          <b>Bairro: </b>
+          {endereco?.bairro}
+        </ClientInfosData>
+        <ClientInfosData>
+          <b>Cidade: </b>
+          {endereco?.cidade}
+        </ClientInfosData>
+      </ClientInfosItem>
+    </ClientInfos>
+  );
 };
 
 export default ClientCard;

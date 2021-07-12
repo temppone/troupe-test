@@ -6,5 +6,5 @@ export const FooterItem = styled.div`
   align-items: center;
   height: 15rem;
   bottom: 0;
-  position: relative;
+  position: absolute;
 `;

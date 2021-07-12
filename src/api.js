@@ -28,7 +28,7 @@ export const TOKEN_VALIDATE_POST = (token) => {
   };
 };
 
-export const CLIENTS_GET = (clientes) => {
+export const CLIENTS_GET = () => {
   return {
     url: `${API_URL}/clientes`,
     options: {

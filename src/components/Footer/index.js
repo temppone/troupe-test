@@ -5,7 +5,7 @@ import { FlexContainer } from '../../shared/flexContainer';
 
 const Footer = () => {
   return (
-    <FlexContainer flexDirection="row" padding="1rem" justifyContent="center">
+    <FlexContainer flexDirection="row" padding="1rem" justifyContent="center" margin="0  auto">
       <FooterItem>&copy; 2021 | Todos os direitos reservados.</FooterItem>
       <FooterItem></FooterItem>
     </FlexContainer>
