@@ -22,11 +22,15 @@ const UserStorage = ({ children }) => {
         //   if (response.ok) throw new Error('Token Inválido');
         //   await getUser(token);
         // } catch (err) {
+        //   userLogout();
+        // } finally {
         //   setLoading(false);
         // }
 
         await getUser(token);
+        return;
       }
+      userLogout();
     };
     autoLogin();
   }, []);
@@ -49,17 +53,28 @@ const UserStorage = ({ children }) => {
   };
 
   const userLogin = async ({ email, password }) => {
-    const { url, options } = TOKEN_POST(email, password);
-    const tokenRes = await fetch(url, options);
+    try {
+      setError(null);
+      setLoading(true);
+      const { url, options } = TOKEN_POST(email, password);
+      const tokenRes = await fetch(url, options);
+      if (tokenRes.ok) {
+        throw new Error(`Error: ${tokenRes.statusText}`);
+      }
+      const response = await tokenRes.json();
 
-    const response = await tokenRes.json();
-
-    if (response && response.length >= 1) {
-      window.localStorage.setItem('token', '12072021');
-      await getUser(response);
-      return;
+      if (response && response.length >= 1) {
+        window.localStorage.setItem('token', '12072021');
+        await getUser(response);
+        return;
+      }
+    } catch (err) {
+      setError(err.message);
+      setLogin(false);
     }
-    throw Error('Algo deu errado');
+    finally{
+      setLoading(false);
+    }
   };
 
   return (

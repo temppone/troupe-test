@@ -46,6 +46,7 @@ const ClientCard = () => {
             background={theme.colors.secundaryDark}
             margin="1rem"
             borderRadius="0.9rem"
+            key={client.cpf}
           >
             <ClientInfos>
               <BallDiv />

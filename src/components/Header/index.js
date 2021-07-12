@@ -28,7 +28,7 @@ const Header = () => {
         </Link>
       </FlexContainer> */}
 
-      {login ? <Button onClick={userLogout}>Logout</Button> : null}
+      {login ? <Button onClick={userLogout} buttonName="Sair" /> : null}
     </HeaderNav>
   );
 };

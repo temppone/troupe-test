@@ -30,9 +30,7 @@ const ClientList = () => {
     >
       <Header />
       <PageTitle>Clientes</PageTitle>
-      <ClientsListGreeting>
-        Você está logado como: {data && 'Data'}
-      </ClientsListGreeting>
+      <ClientsListGreeting>Lista de dados</ClientsListGreeting>
       <ClientCard />
     </FlexContainer>
   );

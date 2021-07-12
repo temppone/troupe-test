@@ -13,6 +13,7 @@ const Home = () => {
       alignItems="center"
       padding="1rem"
       wdith="100%"
+      margin="0 auto"
     >
       <LoginSvg width="20rem" height="15rem" />
       <Login />
