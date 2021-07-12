@@ -22,6 +22,19 @@
     },
     {
       "token": "tokenString"
+    },
+    {
+      "nome": "Gustavo Tempone de Oliveira Faria",
+      "cpf": "101.945.806-28",
+      "email": "gtvtempone@gmail.com",
+      "endereco": {
+        "cep": "36680-000",
+        "rua": "3312",
+        "numero": "2321123",
+        "bairro": "Centro",
+        "cidade": "São João Nepomuceno"
+      },
+      "id": "XpSK45Q"
     }
   ]
 }

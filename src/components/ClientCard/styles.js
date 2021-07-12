@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 
 export const ClientInfos = styled.div`
-  margin: 1rem;
-  padding: 1rem;
 `;
 
 export const BallDiv = styled.div`
-  content:"";
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
-  width: 0.5rem;
-  height: 0.5rem;
   background: ${({ theme }) => theme.colors.contrast};
-
-  `;
+  margin: 2rem;
+`;
 
 export const ClientInfosItem = styled.div`
   padding: 1rem 0;

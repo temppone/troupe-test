@@ -41,15 +41,17 @@ const ClientCard = () => {
       <>
         {data?.map((client) => (
           <FlexContainer
-            flexDirection="column"
-            justifyContetn="center"
+            flexDirection="row"
+            alignItems="flex-start"
+            justifyContent="flex-start"
             background={theme.colors.secundaryDark}
             margin="1rem"
+            padding="1rem 1rem"
             borderRadius="0.9rem"
             key={client.cpf}
           >
+            <BallDiv />
             <ClientInfos>
-              <BallDiv />
               <ClientInfosItem>
                 <ClientInfosField>Nome</ClientInfosField>
                 <ClientInfosData>{client.nome}</ClientInfosData>
