@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './shared/theme';
 import Loading from './components/Loading';
 import { Toaster } from 'react-hot-toast';
+import UserStorage from './UserContext';
 
 const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
@@ -17,20 +18,21 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Router>
-          <Toaster />
-          <Routes>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/clientCreate">
-              <ClientCreate />
-            </Route>
-            <Route path="/clientslist">
-              <ClientsList />
-            </Route>
-
-          </Routes>
-          <Footer />
+          <UserStorage>
+            <Toaster />
+            <Routes>
+              <Route path="/">
+                <Home />
+              </Route>
+              <Route path="/clientCreate">
+                <ClientCreate />
+              </Route>
+              <Route path="/clientslist">
+                <ClientsList />
+              </Route>
+            </Routes>
+            <Footer />
+          </UserStorage>
         </Router>
       </ThemeProvider>
     </Suspense>

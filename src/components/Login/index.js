@@ -1,6 +1,6 @@
 //TODO bug com o get da token de login com o servidor
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { LoginHeader, LoginForm, LoginGreeting } from './styles';
 import Input from '../Input';
@@ -12,10 +12,25 @@ import { ptForm } from 'yup-locale-pt';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
-import { TOKEN_POST } from '../../api';
+import { TOKEN_POST, USER_GET } from '../../api';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      getUser(token);
+    }
+  }, []);
+
+  const getUser = async (token) => {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+
+    console.log(json);
+  };
 
   yup.setLocale(ptForm);
 
@@ -50,7 +65,10 @@ const Login = () => {
       const response = await fetch(url, options);
       const json = await response.json();
       console.log(json);
-      window.localStorage.setItem('token', json.token);
+      window.localStorage.setItem('token', "tokenString");
+
+      getUser(json.token);
+      console.log(json.token);
 
       console.log(json);
     } else {

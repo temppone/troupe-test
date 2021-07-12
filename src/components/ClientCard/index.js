@@ -65,23 +65,23 @@ const ClientCard = () => {
                 <ClientInfosField>Endereço</ClientInfosField>
                 <ClientInfosData>
                   <b>CEP: </b>
-                  {client.endereco.cep}
+                  {client.endereco?.cep}
                 </ClientInfosData>
                 <ClientInfosData>
                   <b>Logradouro: </b>
-                  {client.endereco.rua}
+                  {client.endereco?.rua}
                 </ClientInfosData>
                 <ClientInfosData>
                   <b>Número: </b>
-                  {client.endereco.numero}
+                  {client.endereco?.numero}
                 </ClientInfosData>
                 <ClientInfosData>
                   <b>Bairro: </b>
-                  {client.endereco.bairro}
+                  {client.endereco?.bairro}
                 </ClientInfosData>
                 <ClientInfosData>
                   <b>Cidade: </b>
-                  {client.endereco.cidade}
+                  {client.endereco?.cidade}
                 </ClientInfosData>
               </ClientInfosItem>
             </ClientInfos>

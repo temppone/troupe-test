@@ -8,17 +8,12 @@
     {
       "email": "teste@emaill.com.br",
       "password": "123456",
-      "id": "KHY1W9_"
+      "id": "lsx7ftY"
     },
     {
       "email": "teste@emaill.com.br",
       "password": "123456",
-      "id": "zUzehlF"
-    },
-    {
-      "email": "teste@emaill.com.br",
-      "password": "123456",
-      "id": "apsUYU0"
+      "id": "zdrQVaE"
     }
   ],
   "clientes": [
@@ -28,51 +23,15 @@
       "cpf": "213.123.123-45",
       "email": "foo_bar@email.com",
       "endereco": {
-        "cep": 13454000,
+        "cep": "13454000",
         "rua": "rua talvez",
-        "numero": 785,
+        "numero": "785",
         "bairro": "bairro azul",
         "cidade": "cidade eterna"
       }
     },
     {
-      "nome": "GUSTAVO TEMPONE DE OLIVEIRA FARIA",
-      "cpf": "101.945.806-28",
-      "email": "gtvtempone@gmail.com",
-      "endereco": {
-        "cep": "36680-000",
-        "rua": "sapoasosak",
-        "numero": "ksaokasoks",
-        "bairro": "saoksaksao",
-        "cidade": "São João Nepomuceno"
-      },
-      "id": "qCHZu_B"
-    },
-    {
-      "nome": "GUSTAVO TEMPONE DE OLIVEIRA FARIA",
-      "cpf": "101.945.806-28",
-      "email": "gtvtempone@gmail.com",
-      "endereco": {
-        "cep": "36680-000",
-        "rua": "sapoasosak",
-        "numero": "ksaokasoks",
-        "bairro": "saoksaksao",
-        "cidade": "São João Nepomuceno"
-      },
-      "id": "LmpBrht"
-    },
-    {
-      "nome": "Tempone",
-      "cpf": "101.945.806-27",
-      "email": "gtvtempone@aosskosa.com",
-      "endereco": {
-        "cep": "12320-123",
-        "rua": "saoasjksao",
-        "numero": "sakoaskos",
-        "bairro": "saokaso",
-        "cidade": "psalasplsa"
-      },
-      "id": "VJzGNR8"
+      "token": "tokenString"
     }
   ]
 }
