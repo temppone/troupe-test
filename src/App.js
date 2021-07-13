@@ -6,6 +6,7 @@ import { theme } from './shared/theme';
 import Loading from './components/Loading';
 import { Toaster } from 'react-hot-toast';
 import UserStorage from './UserContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
@@ -24,12 +25,12 @@ function App() {
               <Route path="/">
                 <Home />
               </Route>
-              <Route path="/clientCreate">
+              <ProtectedRoute path="clientcreate">
                 <ClientCreate />
-              </Route>
-              <Route path="/clientslist">
+              </ProtectedRoute>
+              <ProtectedRoute path="clientslist">
                 <ClientsList />
-              </Route>
+              </ProtectedRoute>
             </Routes>
             <Footer />
           </UserStorage>

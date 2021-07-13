@@ -29,6 +29,8 @@ const UserStorage = ({ children }) => {
 
         await getUser(token);
         return;
+      }else{
+        setLogin(false);
       }
       userLogout();
     };

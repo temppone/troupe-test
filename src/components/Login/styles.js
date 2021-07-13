@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LoginHeader = styled.div`
@@ -26,6 +27,10 @@ export const LoginHeader = styled.div`
 
 export const LoginGreeting = styled.p`
   font-size: 1.4rem;
+`;
+
+export const LinkLogin = styled(Link)`
+  align-self: flex-end;
 `;
 
 export const LoginForm = styled.form`

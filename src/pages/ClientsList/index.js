@@ -13,7 +13,7 @@ const ClientList = () => {
   const [clients, setClients] = useState([{}]);
 
   useEffect(() => {
-    console.log("useEffect");
+    console.log('useEffect');
     // const infiniteScroll = (event) => {
     //   console.log(event);
     // };
@@ -23,7 +23,7 @@ const ClientList = () => {
       var { json: clients } = await request(url, options);
       console.log(clients);
       setClients(clients);
-    }
+    };
 
     getClients();
 
@@ -45,10 +45,7 @@ const ClientList = () => {
       <Header />
       <PageTitle>Clientes</PageTitle>
       <ClientsListGreeting>Lista de dados</ClientsListGreeting>
-      {
-        clients && clients?.map((value) => <ClientCard {...value} />)
-      }
-
+      {clients && clients?.map((value) => <ClientCard {...value} />)}
     </FlexContainer>
   );
 };

@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 
 export const ClientInfos = styled.div`
-`;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin: 1rem auto;
+  width: 100%;
+  border-radius: 0.9rem;
 
-export const BallDiv = styled.div`
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.contrast};
-  margin: 2rem;
+  background: ${({ theme }) => theme.colors.secundaryDark};
+
+  :before {
+    content: '';
+    width: 3rem;
+    height: 0.3rem;
+    border-radius: 0.9rem;
+
+    background: ${({ theme }) => theme.colors.contrast};
+  }
 `;
 
 export const ClientInfosItem = styled.div`

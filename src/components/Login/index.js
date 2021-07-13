@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { LoginHeader, LoginForm, LoginGreeting } from './styles';
+import { LoginHeader, LoginForm, LoginGreeting, LinkLogin } from './styles';
 import Input from '../Input';
 import Button from '../Button';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,7 +9,6 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
-import Toast from '../Toast';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
@@ -36,19 +35,19 @@ const Login = () => {
 
   const loginSubmit = async (loginFormValues) => {
     if (loginFormValues) {
-    //   <Toast
-    //     isPromise={true}
-    //     thePromise={userLogin(loginFormValues)}
-    //     errorMsg={(err) => err.toString}
-    //   />;
+      //   <Toast
+      //     isPromise={true}
+      //     thePromise={userLogin(loginFormValues)}
+      //     errorMsg={(err) => err.toString}
+      //   />;
       toast.promise(
-      userLogin(loginFormValues),
-      {
-      loading: 'Carregando...',
-      success: 'Entrando',
-      error: (err) => err.toString(),
-      },
-      { position: 'bottom-center' }
+        userLogin(loginFormValues),
+        {
+          loading: 'Carregando...',
+          success: 'Entrando',
+          error: (err) => err.toString(),
+        },
+        { position: 'bottom-center' }
       );
 
       return;
@@ -89,8 +88,9 @@ const Login = () => {
           required={true}
           inputError={errors.password?.message}
         />
-
-        <Button buttonName="Entrar" disabled={disabledButton} />
+        <LinkLogin to="/clientslist">
+          <Button buttonName="Entrar" disabled={disabledButton} />
+        </LinkLogin>
       </LoginForm>
     </FlexContainer>
   );

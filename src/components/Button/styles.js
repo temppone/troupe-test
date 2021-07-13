@@ -10,6 +10,7 @@ export const ButtonBox = styled.button`
   box-sizing: border-box;
   width: ${({ width }) => width};
   margin: ${({ margin }) => margin};
+  align-self: ${({alignSelf}) => alignSelf};
 
 
   :hover,

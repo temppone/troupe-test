@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react';
-import { CLIENTS_GET } from '../../api';
-import useFetch from '../../Hooks/useFetch';
-import { FlexContainer } from '../../shared/flexContainer';
-import { theme } from '../../shared/theme';
-import Loading from '../Loading';
+import React from 'react';
 import {
-  ClientInfos,
-  ClientInfosItem,
-  ClientInfosField,
-  ClientInfosData,
-  BallDiv,
+  ClientInfos, ClientInfosData, ClientInfosField, ClientInfosItem
 } from './styles';
+
+
 
 const ClientCard = ({
   nome,
