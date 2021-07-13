@@ -9,7 +9,6 @@ const useFetch = () => {
     let response;
     let json;
 
-    console.log(url);
 
     try {
       setError(null);

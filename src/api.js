@@ -37,6 +37,16 @@ export const CLIENTS_GET = () => {
   };
 };
 
+
+export const CLIENT_GET = (id) => {
+  return {
+    url: `${API_URL}/clientes/${id}`,
+    options: {
+      method: 'GET',
+    },
+  };
+};
+
 export const CLIENT_POST = (body) => {
   return {
     url: API_URL + '/clientes',

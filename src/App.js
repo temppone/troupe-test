@@ -25,10 +25,11 @@ function App() {
               <Route path="/">
                 <Home />
               </Route>
-              <ProtectedRoute path="clientcreate">
+              <ProtectedRoute path="clientes/create">
                 <ClientCreate />
               </ProtectedRoute>
-              <ProtectedRoute path="clientslist">
+              <Route path="clientes/edit/:id" element={<ClientCreate />} />
+              <ProtectedRoute path="clientes">
                 <ClientsList />
               </ProtectedRoute>
             </Routes>

@@ -4,6 +4,11 @@
       "email": "teste@emaill.com.br",
       "password": "123456",
       "id": "1"
+    },
+    {
+      "email": "victoremidio@yahoo.com.br",
+      "password": "123456",
+      "id": "2"
     }
   ],
   "clientes": [

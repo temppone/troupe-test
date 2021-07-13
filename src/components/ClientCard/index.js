@@ -13,7 +13,6 @@ const ClientCard = ({
   return (
 
     <ClientInfos>
-      {console.log(nome)}
       <ClientInfosItem>
         <ClientInfosField>Nome</ClientInfosField>
         <ClientInfosData>{nome}</ClientInfosData>

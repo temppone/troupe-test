@@ -1,6 +1,6 @@
 //TODO bug com a criação de clientes com o servidor
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CreateHeader, CreateGreeting, CreateForm } from './styles';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
@@ -12,10 +12,12 @@ import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import { CLIENT_POST } from '../../api';
+import { API_URL, CLIENT_POST, CLIENT_GET } from '../../api';
+import { useParams } from "react-router";
 
-const ClientCreate = () => {
+const ClientCreate = (props) => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
+  const { id } = useParams();
 
   yup.setLocale(ptForm);
 
@@ -44,17 +46,32 @@ const ClientCreate = () => {
   const {
     register,
     handleSubmit,
+    defaultValues,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  console.log(handleSubmit);
-  console.log(register);
-  console.log(errors);
+  useEffect(() => {
+
+    const getClient = async () => {
+
+      if (id) {
+        const { url, options } = CLIENT_GET(id);
+        var response = await fetch(url, options);
+        var json = await response.json();
+        reset(json);
+      }
+    }
+
+    getClient();
+
+  }, [])
+
+
 
   const clientCreateSubmit = async (createdUser) => {
-    console.log(createdUser);
     if (createdUser) {
       setDisabledButtonCreate(true);
       toast.success('Cadastrando', {
@@ -64,14 +81,12 @@ const ClientCreate = () => {
       const { url, options } = CLIENT_POST(createdUser);
       const response = await fetch(url, options);
 
-      console.log(response);
     } else {
       toast.error('Algo deu errado :(', {
         position: 'botton-center',
       });
     }
 
-    console.log(createdUser);
   };
 
   return (

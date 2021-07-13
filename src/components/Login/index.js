@@ -9,14 +9,13 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
   const { userLogin, login } = useContext(UserContext);
-
-  console.log(login, 'login');
-
-  console.log(userLogin, 'user login');
+  const navigate = useNavigate();
 
   yup.setLocale(ptForm);
 
@@ -35,25 +34,25 @@ const Login = () => {
 
   const loginSubmit = async (loginFormValues) => {
     if (loginFormValues) {
-      //   <Toast
-      //     isPromise={true}
-      //     thePromise={userLogin(loginFormValues)}
-      //     errorMsg={(err) => err.toString}
-      //   />;
       toast.promise(
         userLogin(loginFormValues),
         {
-          loading: 'Carregando...',
-          success: 'Entrando',
-          error: (err) => err.toString(),
+          loading: () => {
+            setDisabledButton(true)
+            return 'Carregando...'
+          },
+          success: () => {
+            navigate("clientes")
+            return 'Entrando'
+          },
+          error: (err) => {
+            setDisabledButton(false)
+            return err.toString()
+          }
         },
         { position: 'bottom-center' }
       );
-
-      return;
     }
-
-    setDisabledButton(false);
   };
 
   return (
@@ -69,7 +68,7 @@ const Login = () => {
       </LoginHeader>
       <LoginForm
         action=""
-        onSubmit={handleSubmit(async (e) => await loginSubmit(e))}
+        onSubmit={handleSubmit(loginSubmit)}
       >
         <Input
           name="email"
@@ -88,9 +87,9 @@ const Login = () => {
           required={true}
           inputError={errors.password?.message}
         />
-        <LinkLogin to="/clientslist">
-          <Button buttonName="Entrar" disabled={disabledButton} />
-        </LinkLogin>
+        {/* <LinkLogin to="/clientslist"> */}
+        <Button buttonName="Entrar" disabled={disabledButton} />
+        {/* </LinkLogin> */}
       </LoginForm>
     </FlexContainer>
   );

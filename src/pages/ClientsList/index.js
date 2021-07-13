@@ -13,7 +13,6 @@ const ClientList = () => {
   const [clients, setClients] = useState([{}]);
 
   useEffect(() => {
-    console.log('useEffect');
     // const infiniteScroll = (event) => {
     //   console.log(event);
     // };
@@ -21,7 +20,6 @@ const ClientList = () => {
       const { url, options } = CLIENTS_GET();
 
       var { json: clients } = await request(url, options);
-      console.log(clients);
       setClients(clients);
     };
 

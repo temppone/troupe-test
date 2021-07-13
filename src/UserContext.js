@@ -6,7 +6,7 @@ export const UserContext = React.createContext();
 
 const UserStorage = ({ children }) => {
   const [data, setData] = useState(null);
-  const [login, setLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -29,8 +29,8 @@ const UserStorage = ({ children }) => {
 
         await getUser(token);
         return;
-      }else{
-        setLogin(false);
+      } else {
+        setLoggedIn(false);
       }
       userLogout();
     };
@@ -41,7 +41,7 @@ const UserStorage = ({ children }) => {
     setData(null);
     setError(null);
     setLoading(false);
-    setLogin(false);
+    setLoggedIn(false);
     window.localStorage.removeItem('token');
   };
 
@@ -51,7 +51,7 @@ const UserStorage = ({ children }) => {
     const json = await response.json();
 
     setData(json);
-    setLogin(true);
+    setLoggedIn(true);
   };
 
   const userLogin = async ({ email, password }) => {
@@ -59,18 +59,16 @@ const UserStorage = ({ children }) => {
       setError(null);
       setLoading(true);
       const { url, options } = TOKEN_POST(email, password);
-      const tokenRes = await fetch(url, options);
-      if (tokenRes.ok) {
-        throw new Error(`Error: ${tokenRes.statusText}`);
-      }
-      const response = await tokenRes.json();
+      const response = await fetch(url, options);
 
-      if (response.length >= 1) {
+      const userResponseBody = await response.json();
+      if (userResponseBody.length >= 1) {
         window.localStorage.setItem('token', '12072021');
+        setLoggedIn(true);
         await getUser(response);
       }
     } catch (err) {
-      setLogin(false);
+      setLoggedIn(false);
       throw new Error('Login incorreto');
     } finally {
       setLoading(false);
@@ -78,7 +76,7 @@ const UserStorage = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ userLogin, userLogout, login, data }}>
+    <UserContext.Provider value={{ userLogin, userLogout, loggedIn, data }}>
       {children}
     </UserContext.Provider>
   );
