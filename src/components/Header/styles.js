@@ -12,7 +12,7 @@ export const HeaderNav = styled.header`
 
 export const HeaderLogo = styled.div`
   a {
-    padding: 1.4rem;
+    padding: 1rem;
   }
 `;
 

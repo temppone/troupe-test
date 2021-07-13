@@ -29,7 +29,7 @@ const Header = () => {
 
           <HeaderLogo>
             <Link to="/clientes">
-              <Logo width="6rem" height="5rem" />
+              <Logo width="7rem" height="6rem" />
             </Link>
           </HeaderLogo>
         </FlexContainer>

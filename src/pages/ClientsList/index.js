@@ -51,14 +51,15 @@ const ClientList = () => {
     // };
   }, [request]);
 
-  if (error) return <ErrorDiv>Algo deu errado</ErrorDiv>;
+  if (error) return <ErrorDiv>Algo deu errado :(</ErrorDiv>;
   if (loading) return <Loading />;
   if (data)
     return (
       <FlexContainer
         flexDirection="column"
         justifyContent="center"
-        margin="0"
+        alignItems="center"
+        margin="0 auto"
         padding="1rem auto"
       >
         <Head title="Clientes" description="Lista de clientes do Useeers" />

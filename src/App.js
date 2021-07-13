@@ -13,6 +13,7 @@ const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
 const ClientCreate = lazy(() => import('./pages/ClientCreate'));
 const ClientsList = lazy(() => import('./pages/ClientsList'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
                 path="/clientes/edit/:id"
                 element={<ClientCreate />}
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
           </UserStorage>
