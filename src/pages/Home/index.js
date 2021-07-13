@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Login from '../../components/Login';
 import { FlexContainer } from '../../shared/flexContainer';
 import { ReactComponent as LoginSvg } from '../../assets/login.svg';
+import Head from '../../components/Head';
 
 const Home = () => {
   // const { userLogin } = useContext(useContext);
@@ -15,6 +16,7 @@ const Home = () => {
       wdith="100%"
       margin="0 auto"
     >
+      <Head title="Login" description="Home do site useeers" />
       <LoginSvg width="20rem" height="15rem" />
       <Login />
 

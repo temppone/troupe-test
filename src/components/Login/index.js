@@ -11,11 +11,10 @@ import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
 import { useNavigate } from 'react-router-dom';
 
-
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
-  const { userLogin, login } = useContext(UserContext);
-  const navigate = useNavigate();
+  const { userLogin } = useContext(UserContext);
+  const navigate = useNavigate(); 
 
   yup.setLocale(ptForm);
 
@@ -38,17 +37,17 @@ const Login = () => {
         userLogin(loginFormValues),
         {
           loading: () => {
-            setDisabledButton(true)
-            return 'Carregando...'
+            setDisabledButton(true);
+            return 'Carregando...';
           },
           success: () => {
-            navigate("clientes")
-            return 'Entrando'
+            navigate('clientes');
+            return 'Logando';
           },
           error: (err) => {
-            setDisabledButton(false)
-            return err.toString()
-          }
+            setDisabledButton(false);
+            return err.toString();
+          },
         },
         { position: 'bottom-center' }
       );
@@ -66,10 +65,7 @@ const Login = () => {
         <PageTitle>Faça seu login.</PageTitle>
         <LoginGreeting>Olá de novo!</LoginGreeting>
       </LoginHeader>
-      <LoginForm
-        action=""
-        onSubmit={handleSubmit(loginSubmit)}
-      >
+      <LoginForm action="" onSubmit={handleSubmit(loginSubmit)}>
         <Input
           name="email"
           label="Email"
@@ -87,9 +83,7 @@ const Login = () => {
           required={true}
           inputError={errors.password?.message}
         />
-        {/* <LinkLogin to="/clientslist"> */}
         <Button buttonName="Entrar" disabled={disabledButton} />
-        {/* </LinkLogin> */}
       </LoginForm>
     </FlexContainer>
   );

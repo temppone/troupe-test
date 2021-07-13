@@ -49,13 +49,13 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 15px;
     }
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}){
-      font-size: 16px;
+      font-size: 17px;
     }
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}){
       font-size: 17px;
     }
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.xl}){
-      font-size: 18px;
+      font-size: 17px;
     }
   } 
 `;

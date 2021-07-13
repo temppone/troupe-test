@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import UserStorage from './UserContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
+const Header = lazy(() => import('./components/Header'));
 const Footer = lazy(() => import('./components/Footer'));
 const Home = lazy(() => import('./pages/Home'));
 const ClientCreate = lazy(() => import('./pages/ClientCreate'));
@@ -21,17 +22,24 @@ function App() {
         <Router>
           <UserStorage>
             <Toaster />
+            <Header />
             <Routes>
-              <Route path="/">
-                <Home />
-              </Route>
-              <ProtectedRoute path="clientes/create">
-                <ClientCreate />
-              </ProtectedRoute>
-              <Route path="clientes/edit/:id" element={<ClientCreate />} />
-              <ProtectedRoute path="clientes">
-                <ClientsList />
-              </ProtectedRoute>
+              <Route path="/" element={<Home />} />
+              <ProtectedRoute
+                exact
+                path="/clientes/"
+                element={<ClientsList />}
+              />
+              <ProtectedRoute
+                exact
+                path="/clientes/create"
+                element={<ClientCreate />}
+              />
+              <ProtectedRoute
+                exact
+                path="/clientes/edit/:id"
+                element={<ClientCreate />}
+              />
             </Routes>
             <Footer />
           </UserStorage>

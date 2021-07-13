@@ -4,8 +4,8 @@ export const ClientInfos = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  margin: 1rem auto;
-  width: 100%;
+  margin: 2rem auto;
+  width: 90%;
   border-radius: 0.9rem;
 
   background: ${({ theme }) => theme.colors.secundaryDark};
@@ -29,4 +29,10 @@ export const ClientInfosField = styled.div`
 `;
 export const ClientInfosData = styled.div`
   font-size: 1.4rem;
+`;
+
+export const ClientActions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 `;

@@ -28,15 +28,16 @@ export const TOKEN_VALIDATE_POST = (token) => {
   };
 };
 
-export const CLIENTS_GET = () => {
+export const CLIENTS_GET = ({ page, limit }) => {
   return {
-    url: `${API_URL}/clientes`,
+    url: `${API_URL}/clientes?_page=${page}&_limit=${limit}`,
     options: {
       method: 'GET',
+
+      cache: 'no-store',
     },
   };
 };
-
 
 export const CLIENT_GET = (id) => {
   return {
@@ -56,6 +57,18 @@ export const CLIENT_POST = (body) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
+    },
+  };
+};
+
+export const CLIENT_DELETE = (id) => {
+  return {
+    url: `${API_URL}/clientes/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
   };
 };

@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const FooterItem = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 15rem;
+  height: 5rem;
   bottom: 0;
-  position: absolute;
+  position: relative;
 `;

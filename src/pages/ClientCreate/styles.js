@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const CreateHeader = styled.div`
+  margin-top: 5rem;
+  padding: 2rem;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -15,6 +18,6 @@ export const CreateGreeting = styled.h1`
 export const CreateForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
   width: 100%;
 `;

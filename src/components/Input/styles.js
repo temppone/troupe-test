@@ -10,9 +10,10 @@ export const InputBox = styled.input`
   border-radius: 0.9rem;
   width: 100%;
   font-size: 1.2rem;
-  background: ${({ theme }) => theme.colors.secundaryDark};
   transition: 0.2s;
   box-shadow: none;
+
+  background: ${({ theme }) => theme.colors.secundaryDark};
   color: ${({ theme }) => theme.colors.primaryLight};
   border: 0.1rem solid
     ${({ inputError, theme }) =>

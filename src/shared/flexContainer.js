@@ -45,3 +45,4 @@ export const FlexContainer = styled.div`
 export const PageTitle = styled.h1`
   font-size: 2.2rem;
 `;
+

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { set } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
 export const UserContext = React.createContext();
 
@@ -9,10 +9,12 @@ const UserStorage = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const autoLogin = async () => {
       const token = window.localStorage.getItem('token');
+
       if (token && token === '12072021') {
         // try {
         //   setError(true);
@@ -27,12 +29,12 @@ const UserStorage = ({ children }) => {
         //   setLoading(false);
         // }
 
+        navigate('clientes');
+        setLoggedIn(true);
         await getUser(token);
-        return;
       } else {
-        setLoggedIn(false);
+        userLogout();
       }
-      userLogout();
     };
     autoLogin();
   }, []);

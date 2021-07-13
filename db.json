@@ -3,12 +3,7 @@
     {
       "email": "teste@emaill.com.br",
       "password": "123456",
-      "id": "1"
-    },
-    {
-      "email": "victoremidio@yahoo.com.br",
-      "password": "123456",
-      "id": "2"
+      "id": "0"
     }
   ],
   "clientes": [
@@ -18,24 +13,11 @@
       "cpf": "213.123.123-45",
       "email": "foo_bar@email.com",
       "endereco": {
-        "cep": "13454000",
+        "cep": 13454000,
         "rua": "rua talvez",
-        "numero": "785",
+        "numero": 785,
         "bairro": "bairro azul",
         "cidade": "cidade eterna"
-      }
-    },
-    {
-      "id": "2",
-      "nome": "Gustavo Tempone de Oliveira Faria",
-      "cpf": "101.945.806-28",
-      "email": "gtvtempone@gmail.com",
-      "endereco": {
-        "cep": "36680-000",
-        "rua": "3312",
-        "numero": "2321123",
-        "bairro": "Centro",
-        "cidade": "São João Nepomuceno"
       }
     }
   ]

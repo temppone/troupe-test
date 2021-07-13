@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   position: fixed;
   overflow: hidden;
@@ -9,7 +9,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--on-white);
 `;
 
 

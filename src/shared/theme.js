@@ -20,4 +20,11 @@ export const theme = {
     lg: '1025px',
     xl: '1281px',
   },
+
+  toastStyles: {
+    style: {
+      borderRadius: '0.9rem',
+      background: '#333',
+    },
+  },
 };

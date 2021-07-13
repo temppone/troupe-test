@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export const ButtonBox = styled.button`
   padding: 1rem;
-  background: ${({ theme }) => theme.colors.primaryLight};
-  color: ${({ theme }) => theme.colors.primaryDark};
+  background: ${({ theme, background }) =>
+    background ? background : theme.colors.primaryLight};
+  color: ${({ theme, color }) => (color ? color : theme.colors.primaryDark)};
   border-radius: 0.5rem;
   margin: 1rem;
   cursor: pointer;
   box-sizing: border-box;
   width: ${({ width }) => width};
   margin: ${({ margin }) => margin};
-  align-self: ${({alignSelf}) => alignSelf};
-
+  align-self: ${({ alignSelf }) => alignSelf};
 
   :hover,
   :focus {

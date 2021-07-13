@@ -1,6 +1,6 @@
 //TODO bug com a criação de clientes com o servidor
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CreateHeader, CreateGreeting, CreateForm } from './styles';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
@@ -12,12 +12,11 @@ import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import { API_URL, CLIENT_POST, CLIENT_GET } from '../../api';
-import { useParams } from "react-router";
+import { CLIENT_POST } from '../../api';
+import Head from '../../components/Head';
 
-const ClientCreate = (props) => {
+const ClientCreate = () => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
-  const { id } = useParams();
 
   yup.setLocale(ptForm);
 
@@ -46,32 +45,17 @@ const ClientCreate = (props) => {
   const {
     register,
     handleSubmit,
-    defaultValues,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  useEffect(() => {
-
-    const getClient = async () => {
-
-      if (id) {
-        const { url, options } = CLIENT_GET(id);
-        var response = await fetch(url, options);
-        var json = await response.json();
-        reset(json);
-      }
-    }
-
-    getClient();
-
-  }, [])
-
-
+  console.log(handleSubmit);
+  console.log(register);
+  console.log(errors);
 
   const clientCreateSubmit = async (createdUser) => {
+    console.log(createdUser);
     if (createdUser) {
       setDisabledButtonCreate(true);
       toast.success('Cadastrando', {
@@ -81,12 +65,14 @@ const ClientCreate = (props) => {
       const { url, options } = CLIENT_POST(createdUser);
       const response = await fetch(url, options);
 
+      console.log(response);
     } else {
       toast.error('Algo deu errado :(', {
         position: 'botton-center',
       });
     }
 
+    console.log(createdUser);
   };
 
   return (
@@ -96,8 +82,10 @@ const ClientCreate = (props) => {
       alignItems="center"
       padding="1rem"
     >
-      <Header />
-
+      <Head
+        title="Cadastro"
+        description="Tela de cadastro de clientes da useeer"
+      />
       <CreateHeader>
         <PageTitle>Cadastro</PageTitle>
         <CreateGreeting>Preencha o formulário</CreateGreeting>

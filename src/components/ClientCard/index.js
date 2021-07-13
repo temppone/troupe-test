@@ -1,17 +1,33 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CLIENT_DELETE } from '../../api';
+import useFetch from '../../Hooks/useFetch';
+import { theme } from '../../shared/theme';
+import Button from '../Button';
+
 import {
-  ClientInfos, ClientInfosData, ClientInfosField, ClientInfosItem
+  ClientInfos,
+  ClientInfosItem,
+  ClientInfosField,
+  ClientInfosData,
+  ClientActions,
 } from './styles';
 
+const ClientCard = ({ id, nome, cpf, email, endereco }) => {
+  const navigate = useNavigate();
+  const { loading, request } = useFetch();
 
+  const handleDelete = async () => {
+    const confirm = window.confirm('Tem certeza que deseja deletar?');
 
-const ClientCard = ({
-  nome,
-  cpf,
-  email,
-  endereco }) => {
+    if (confirm) {
+      const { url, options } = await CLIENT_DELETE(id);
+      const { response } = await request(url, options);
+
+      if (response.ok) window.location.reload();
+    }
+  };
+
   return (
-
     <ClientInfos>
       <ClientInfosItem>
         <ClientInfosField>Nome</ClientInfosField>
@@ -48,6 +64,32 @@ const ClientCard = ({
           {endereco?.cidade}
         </ClientInfosData>
       </ClientInfosItem>
+      <ClientActions>
+        <Button
+          buttonName="Criar"
+          onClick={() => navigate('/clientes/create')}
+        />
+        <Button
+          buttonName="Editar"
+          onClick={() => navigate('/clientes/create/:id')}
+        />
+        {loading ? (
+          <Button
+            buttonName="Deletar"
+            background={theme.colors.warning}
+            color={theme.colors.primaryLight}
+            onClick={handleDelete}
+            disabled
+          />
+        ) : (
+          <Button
+            buttonName="Deletar"
+            background={theme.colors.warning}
+            color={theme.colors.primaryLight}
+            onClick={handleDelete}
+          />
+        )}
+      </ClientActions>
     </ClientInfos>
   );
 };

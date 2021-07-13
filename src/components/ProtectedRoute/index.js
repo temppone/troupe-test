@@ -8,7 +8,6 @@ const ProtectedRoute = (props) => {
   if (loggedIn === true) return <Route {...props} />;
   else if (loggedIn === false) return <Navigate to="/" />;
   else return null;
-  return <></>;
 };
 
 export default ProtectedRoute;
