@@ -3,7 +3,12 @@
     {
       "email": "teste@emaill.com.br",
       "password": "123456",
-      "id": "0"
+      "id": "1"
+    },
+    {
+      "email": "victoremidio@yahoo.com.br",
+      "password": "123456",
+      "id": ""
     }
   ],
   "clientes": [
@@ -19,6 +24,45 @@
         "bairro": "bairro azul",
         "cidade": "cidade eterna"
       }
+    },
+    {
+      "nome": "Victor Emídio",
+      "cpf": "07986401621",
+      "email": "victoremidio@yahoo.com.br",
+      "endereco": {
+        "cep": "36680-000",
+        "rua": "Rua Presidente Kennedy",
+        "numero": "312",
+        "bairro": "Santa Rita",
+        "cidade": "São João Nepomuceno"
+      },
+      "id": "MxM5Zye"
+    },
+    {
+      "nome": "Victor Emídio",
+      "cpf": "07986401621",
+      "email": "victoremidio@yahoo.com.br",
+      "endereco": {
+        "cep": "36680-000",
+        "rua": "Rua Presidente Kennedy",
+        "numero": "312",
+        "bairro": "Santa Rita",
+        "cidade": "São João Nepomuceno"
+      },
+      "id": "Re-4NIH"
+    },
+    {
+      "nome": "Victor Emídio",
+      "cpf": "07986401621",
+      "email": "victoremidio@yahoo.com.br",
+      "endereco": {
+        "cep": "36680-000",
+        "rua": "Rua Presidente Kennedy",
+        "numero": "312",
+        "bairro": "Santa Rita",
+        "cidade": "São João Nepomuceno"
+      },
+      "id": "_tfQrpK"
     }
   ]
 }

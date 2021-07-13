@@ -9,12 +9,12 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
   const { userLogin } = useContext(UserContext);
-  const navigate = useNavigate(); 
+  const history = useHistory();
 
   yup.setLocale(ptForm);
 
@@ -41,7 +41,7 @@ const Login = () => {
             return 'Carregando...';
           },
           success: () => {
-            navigate('clientes');
+            history.push('clientes');
             return 'Logando';
           },
           error: (err) => {

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { CLIENT_DELETE } from '../../api';
 import useFetch from '../../Hooks/useFetch';
 import { theme } from '../../shared/theme';
@@ -12,21 +12,8 @@ import {
   ClientActions,
 } from './styles';
 
-const ClientCard = ({ id, nome, cpf, email, endereco }) => {
-  const navigate = useNavigate();
-  const { loading, request } = useFetch();
-
-  const handleDelete = async () => {
-    const confirm = window.confirm('Tem certeza que deseja deletar?');
-
-    if (confirm) {
-      const { url, options } = await CLIENT_DELETE(id);
-      const { response } = await request(url, options);
-
-      if (response.ok) window.location.reload();
-    }
-  };
-
+const ClientCard = ({ id, nome, cpf, email, endereco, handleDelete, loading }) => {
+  const history = useHistory();
   return (
     <ClientInfos>
       <ClientInfosItem>
@@ -67,11 +54,11 @@ const ClientCard = ({ id, nome, cpf, email, endereco }) => {
       <ClientActions>
         <Button
           buttonName="Criar"
-          onClick={() => navigate('/clientes/create')}
+          onClick={() => history.push('/clientes/create')}
         />
         <Button
           buttonName="Editar"
-          onClick={() => navigate('/clientes/create/:id')}
+          onClick={() => history.push(`/clientes/${id}`)}
         />
         {loading ? (
           <Button

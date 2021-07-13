@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
-import { Navigate, Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 
 const ProtectedRoute = (props) => {
   const { loggedIn } = useContext(UserContext);
 
-  if (loggedIn === true) return <Route {...props} />;
-  else if (loggedIn === false) return <Navigate to="/" />;
-  else return null;
+  if (loggedIn) return <Route {...props} />;
+  return <Redirect to="/" />;
 };
 
 export default ProtectedRoute;

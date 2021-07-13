@@ -1,6 +1,6 @@
 //TODO bug com a criação de clientes com o servidor
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CreateHeader, CreateGreeting, CreateForm } from './styles';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 
@@ -12,12 +12,18 @@ import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import { CLIENT_POST } from '../../api';
+import { CLIENT_POST, CLIENT_GET } from '../../api';
 import Head from '../../components/Head';
+import { useHistory, useParams } from 'react-router-dom';
+
+import Loading from '../../components/Loading';
+import useFetch from '../../Hooks/useFetch';
 
 const ClientCreate = () => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
-
+  const { id: idParam } = useParams();
+  const { data, setData, request, loading } = useFetch();
+  const history = useHistory()
   yup.setLocale(ptForm);
 
   const schema = yup.object().shape({
@@ -45,14 +51,25 @@ const ClientCreate = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  console.log(handleSubmit);
-  console.log(register);
-  console.log(errors);
+  useEffect(() => {
+
+    const getClient = async () => {
+      if (idParam) {
+        const { url, options } = CLIENT_GET(idParam);
+        var { json } = await request(url, options);
+        reset(json);
+      }
+    }
+
+    getClient();
+
+  }, [idParam, request, reset])
 
   const clientCreateSubmit = async (createdUser) => {
     console.log(createdUser);
@@ -66,6 +83,7 @@ const ClientCreate = () => {
       const response = await fetch(url, options);
 
       console.log(response);
+      history.push("/clientes");
     } else {
       toast.error('Algo deu errado :(', {
         position: 'botton-center',
@@ -74,7 +92,7 @@ const ClientCreate = () => {
 
     console.log(createdUser);
   };
-
+  if (loading) return <Loading />
   return (
     <FlexContainer
       flexDirection="column"
@@ -161,7 +179,7 @@ const ClientCreate = () => {
           inputError={errors?.endereco?.cidade?.message}
         />
 
-        <Button buttonName="Cadastrar" disabled={disabledButtonCreate} />
+        <Button buttonName={idParam ? "Editar" : " Cadastrar"} disabled={disabledButtonCreate} />
       </CreateForm>
     </FlexContainer>
   );

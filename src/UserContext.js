@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { set } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
 export const UserContext = React.createContext();
 
@@ -9,7 +9,7 @@ const UserStorage = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
     const autoLogin = async () => {
@@ -28,12 +28,8 @@ const UserStorage = ({ children }) => {
         // } finally {
         //   setLoading(false);
         // }
-
-        navigate('clientes');
         setLoggedIn(true);
         await getUser(token);
-      } else {
-        userLogout();
       }
     };
     autoLogin();

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CLIENTS_GET } from '../../api';
+import { CLIENTS_GET, CLIENT_DELETE } from '../../api';
 import ClientCard from '../../components/ClientCard';
 import Head from '../../components/Head';
 import useFetch from '../../Hooks/useFetch';
@@ -9,10 +9,10 @@ import { ClientListHeader, ClientsListGreeting } from './styles';
 import toast from 'react-hot-toast';
 import { ErrorDiv } from '../../components/Error/styles';
 import Loading from '../../components/Loading';
+import Input from '../../components/Input';
 
 const ClientList = () => {
-  const { data } = useContext(UserContext);
-  const { data: dataFetch, loading, error, request } = useFetch();
+  const { loading, error, request } = useFetch();
   const [clients, setClients] = useState([{}]);
 
   useEffect(() => {
@@ -22,8 +22,7 @@ const ClientList = () => {
     const getClients = async () => {
       const { url, options } = CLIENTS_GET({ page: 1, limit: 4 });
       var { json: clients } = await request(url, options);
-
-      setClients(clients);
+      return clients;
     };
 
     toast.promise(
@@ -32,7 +31,8 @@ const ClientList = () => {
         loading: () => {
           return 'Caregando clientes...';
         },
-        success: () => {
+        success: (data) => {
+          setClients(data)
           return 'Feito!';
         },
         error: (err) => {
@@ -51,9 +51,22 @@ const ClientList = () => {
     // };
   }, [request]);
 
+  const handleDelete = async (id) => {
+    const confirm = window.confirm('Tem certeza que deseja deletar?');
+
+    if (confirm) {
+      const { url, options } = await CLIENT_DELETE(id);
+      const { response } = await request(url, options);
+
+      if (response.ok) {
+        setClients(clients.filter(x => x.id !== id));
+      }
+    }
+  };
+
   if (error) return <ErrorDiv>Algo deu errado :(</ErrorDiv>;
   if (loading) return <Loading />;
-  if (data)
+  if (clients)
     return (
       <FlexContainer
         flexDirection="column"
@@ -69,7 +82,7 @@ const ClientList = () => {
           <ClientsListGreeting>Lista de dados</ClientsListGreeting>
         </ClientListHeader>
         {clients?.map((value) => (
-          <ClientCard key={value} {...value} />
+          <ClientCard key={value} {...value} handleDelete={() => handleDelete(value.id)} />
         ))}
       </FlexContainer>
     );
