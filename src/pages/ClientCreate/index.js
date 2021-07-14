@@ -12,9 +12,9 @@ import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import { CLIENT_POST, CLIENT_GET } from '../../api';
+import { CLIENT_POST, CLIENT_GET, CLIENT_PUT } from '../../api';
 import Head from '../../components/Head';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useNavigate, useParams } from 'react-router-dom';
 
 import Loading from '../../components/Loading';
 import useFetch from '../../Hooks/useFetch';
@@ -23,7 +23,7 @@ const ClientCreate = () => {
   const [disabledButtonCreate, setDisabledButtonCreate] = useState(false);
   const { id: idParam } = useParams();
   const { data, setData, request, loading } = useFetch();
-  const history = useHistory()
+  const navigate = useNavigate();
   yup.setLocale(ptForm);
 
   const schema = yup.object().shape({
@@ -39,7 +39,7 @@ const ClientCreate = () => {
     endereco: yup.object({
       cep: yup
         .string()
-        .matches('([0-9]{5}-[0-9]{3})', 'Digite um CEP válido')
+        .matches('([0-9]{5}[-]?[0-9]{3})', 'Digite um CEP válido')
         .required(),
       rua: yup.string().required(),
       numero: yup.string().required(),
@@ -58,18 +58,16 @@ const ClientCreate = () => {
   });
 
   useEffect(() => {
-
     const getClient = async () => {
       if (idParam) {
         const { url, options } = CLIENT_GET(idParam);
         var { json } = await request(url, options);
         reset(json);
       }
-    }
+    };
 
     getClient();
-
-  }, [idParam, request, reset])
+  }, [idParam, request, reset]);
 
   const clientCreateSubmit = async (createdUser) => {
     console.log(createdUser);
@@ -79,11 +77,14 @@ const ClientCreate = () => {
         position: 'botton-center',
       });
 
-      const { url, options } = CLIENT_POST(createdUser);
+      const { url, options } = idParam
+        ? CLIENT_PUT(idParam, createdUser)
+        : CLIENT_POST(createdUser);
+
       const response = await fetch(url, options);
 
       console.log(response);
-      history.push("/clientes");
+      navigate('/clientes');
     } else {
       toast.error('Algo deu errado :(', {
         position: 'botton-center',
@@ -92,7 +93,7 @@ const ClientCreate = () => {
 
     console.log(createdUser);
   };
-  if (loading) return <Loading />
+  if (loading) return <Loading />;
   return (
     <FlexContainer
       flexDirection="column"
@@ -179,7 +180,10 @@ const ClientCreate = () => {
           inputError={errors?.endereco?.cidade?.message}
         />
 
-        <Button buttonName={idParam ? "Editar" : " Cadastrar"} disabled={disabledButtonCreate} />
+        <Button
+          buttonName={idParam ? 'Editar' : ' Cadastrar'}
+          disabled={disabledButtonCreate}
+        />
       </CreateForm>
     </FlexContainer>
   );

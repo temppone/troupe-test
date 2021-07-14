@@ -84,3 +84,16 @@ export const USER_GET = (token) => {
     },
   };
 };
+
+export const CLIENT_PUT = (id, createdUser) => {
+  return {
+    url: `${API_URL}/clientes/${id}`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(createdUser),
+    },
+  };
+};

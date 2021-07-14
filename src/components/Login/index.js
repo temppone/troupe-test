@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { LoginHeader, LoginForm, LoginGreeting, LinkLogin } from './styles';
-import Input from '../Input';
-import Button from '../Button';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { ptForm } from 'yup-locale-pt';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import * as yup from 'yup';
+import { ptForm } from 'yup-locale-pt';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
 import { UserContext } from '../../UserContext';
-import { useHistory } from 'react-router-dom';
+import Button from '../Button';
+import Input from '../Input';
+import { LoginForm, LoginGreeting, LoginHeader } from './styles';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
   const { userLogin } = useContext(UserContext);
-  const history = useHistory();
 
   yup.setLocale(ptForm);
 
@@ -41,7 +39,6 @@ const Login = () => {
             return 'Carregando...';
           },
           success: () => {
-            history.push('clientes');
             return 'Logando';
           },
           error: (err) => {

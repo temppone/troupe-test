@@ -7,6 +7,7 @@ export const ErrorDiv = styled.div`
 
   margin-top: 7rem;
   height: 10rem;
+  padding: 1rem;
 
   display: flex;
   justify-content: center;

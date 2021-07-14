@@ -1,19 +1,25 @@
-import { useHistory } from 'react-router-dom';
-import { CLIENT_DELETE } from '../../api';
-import useFetch from '../../Hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 import { theme } from '../../shared/theme';
 import Button from '../Button';
-
 import {
-  ClientInfos,
-  ClientInfosItem,
-  ClientInfosField,
-  ClientInfosData,
   ClientActions,
+  ClientInfos,
+  ClientInfosData,
+  ClientInfosField,
+  ClientInfosItem,
 } from './styles';
 
-const ClientCard = ({ id, nome, cpf, email, endereco, handleDelete, loading }) => {
-  const history = useHistory();
+const ClientCard = ({
+  id,
+  nome,
+  cpf,
+  email,
+  endereco,
+  handleDelete,
+  loading,
+}) => {
+  const navigate = useNavigate();
+
   return (
     <ClientInfos>
       <ClientInfosItem>
@@ -53,12 +59,8 @@ const ClientCard = ({ id, nome, cpf, email, endereco, handleDelete, loading }) =
       </ClientInfosItem>
       <ClientActions>
         <Button
-          buttonName="Criar"
-          onClick={() => history.push('/clientes/create')}
-        />
-        <Button
           buttonName="Editar"
-          onClick={() => history.push(`/clientes/${id}`)}
+          onClick={() => navigate(`/clientes/edit/${id}`)}
         />
         {loading ? (
           <Button

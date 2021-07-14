@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { set } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
+import { useNavigate } from 'react-router-dom';
+import { TOKEN_POST, USER_GET } from './api';
 export const UserContext = React.createContext();
 
 const UserStorage = ({ children }) => {
@@ -9,7 +8,13 @@ const UserStorage = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/clientes');
+    }
+  }, [loggedIn, navigate]);
 
   useEffect(() => {
     const autoLogin = async () => {
@@ -28,6 +33,7 @@ const UserStorage = ({ children }) => {
         // } finally {
         //   setLoading(false);
         // }
+
         setLoggedIn(true);
         await getUser(token);
       }
@@ -67,6 +73,7 @@ const UserStorage = ({ children }) => {
       }
     } catch (err) {
       setLoggedIn(false);
+      console.log(err);
       throw new Error('Login incorreto');
     } finally {
       setLoading(false);

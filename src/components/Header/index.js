@@ -8,7 +8,7 @@ import Button from '../Button/index';
 
 const Header = () => {
   const { loggedIn, userLogout } = useContext(UserContext);
-
+  
   if (loggedIn === true) {
     return (
       <HeaderNav>
