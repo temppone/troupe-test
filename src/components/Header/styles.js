@@ -8,6 +8,10 @@ export const HeaderNav = styled.header`
   z-index: 100;
   top: 0;
   font-weight: bold;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 export const HeaderLogo = styled.div`
@@ -21,6 +25,7 @@ export const HeaderMenu = styled.ul`
   flex-direction: rows;
   align-items: center;
   font-size: 1.4rem;
+  
 `;
 export const HeaderMenuItem = styled.li`
   a {
