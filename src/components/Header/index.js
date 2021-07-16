@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { UserContext } from '../../UserContext';
 import Button from '../Button/index';
+import Switch from '../Switch';
 
 const Header = () => {
   const { loggedIn, userLogout } = useContext(UserContext);
-  
+
   if (loggedIn === true) {
     return (
       <HeaderNav>
@@ -24,6 +25,9 @@ const Header = () => {
             </HeaderMenuItem>
             <HeaderMenuItem>
               <Link to="/clientes/create">Cadastro</Link>
+            </HeaderMenuItem>
+            <HeaderMenuItem>
+              <Switch />
             </HeaderMenuItem>
           </HeaderMenu>
 
