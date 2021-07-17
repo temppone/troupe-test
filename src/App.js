@@ -18,17 +18,12 @@ const ClientsList = lazy(() => import('./pages/ClientsList'));
 
 function App() {
   const { actualTheme } = useUserContext();
+  console.log(actualTheme);
 
   return (
     <div className="App">
       <Suspense fallback={<Loading />}>
-        <ThemeProvider
-          theme={{
-            colors:
-              actualTheme === 'dark' ? lightTheme.colors : darkTheme.colors,
-            ...defaultTheme,
-          }}
-        >
+        <ThemeProvider theme={actualTheme === 'dark' ? darkTheme : lightTheme}>
           <GlobalStyle />
           <Toaster />
           <Header />

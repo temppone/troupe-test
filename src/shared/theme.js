@@ -36,7 +36,6 @@ export const darkTheme = {
 
     warning: '#F64B4C',
   },
-
   breakpoints: {
     xs: '480px',
     sm: '600px',
@@ -60,7 +59,6 @@ export const lightTheme = {
 
     warning: '#F64B4C',
   },
-
   breakpoints: {
     xs: '480px',
     sm: '600px',

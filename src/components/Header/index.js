@@ -34,7 +34,11 @@ const Header = () => {
 
           <HeaderLogo>
             <Link to="/clientes">
-              <Logo width="7rem" height="6rem" />
+              <Logo
+                width="7rem"
+                height="6rem"
+                fill={actualTheme === 'dark' ? '#000' : '#fff'}
+              />
             </Link>
           </HeaderLogo>
         </FlexContainer>
