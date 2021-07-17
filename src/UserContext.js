@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TOKEN_POST, USER_GET } from './api';
-export const UserContext = React.createContext();
+
+const UserContext = React.createContext();
+export const useUserContext = () => useContext(UserContext);
 
 const UserStorage = ({ children }) => {
   const [data, setData] = useState(null);
@@ -9,10 +11,11 @@ const UserStorage = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const [actualTheme, setActualTheme] = useState('dark');
 
   useEffect(() => {
     if (loggedIn) {
-      navigate('/clientes');
+      navigate('/clientes');  
     }
   }, [loggedIn, navigate]);
 
@@ -80,8 +83,22 @@ const UserStorage = ({ children }) => {
     }
   };
 
+  const toggleTheme = () =>
+    setActualTheme((currentValue) =>
+      currentValue === 'dark' ? 'light' : 'dark'
+    );
+
   return (
-    <UserContext.Provider value={{ userLogin, userLogout, loggedIn, data }}>
+    <UserContext.Provider
+      value={{
+        userLogin,
+        userLogout,
+        loggedIn,
+        data,
+        toggleTheme,
+        actualTheme,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

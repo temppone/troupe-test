@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { theme } from '../../shared/theme';
+// import { theme } from '../../shared/theme';
 import Button from '../Button';
 import {
   ClientActions,
@@ -62,7 +62,7 @@ const ClientCard = ({
           buttonName="Editar"
           onClick={() => navigate(`/clientes/edit/${id}`)}
         />
-        {loading ? (
+        {/* {loading ? (
           <Button
             buttonName="Deletar"
             background={theme.colors.warning}
@@ -77,7 +77,7 @@ const ClientCard = ({
             color={theme.colors.primaryLight}
             onClick={handleDelete}
           />
-        )}
+        )} */}
       </ClientActions>
     </ClientInfos>
   );

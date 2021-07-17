@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { HeaderNav, HeaderLogo, HeaderMenu, HeaderMenuItem } from './styles';
 import { FlexContainer } from '../../shared/flexContainer';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import { UserContext } from '../../UserContext';
-import Button from '../Button/index';
-import Switch from '../Switch';
+import { useUserContext } from '../../UserContext';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import Brightness2Icon from '@material-ui/icons/Brightness2';
 
 const Header = () => {
-  const { loggedIn, userLogout } = useContext(UserContext);
+  const { loggedIn, actualTheme, toggleTheme } = useUserContext();
 
   if (loggedIn === true) {
     return (
@@ -26,8 +26,9 @@ const Header = () => {
             <HeaderMenuItem>
               <Link to="/clientes/create">Cadastro</Link>
             </HeaderMenuItem>
-            <HeaderMenuItem>
-              <Switch />
+
+            <HeaderMenuItem onClick={() => toggleTheme()}>
+              {actualTheme === 'dark' ? <Brightness2Icon /> : <WbSunnyIcon />}
             </HeaderMenuItem>
           </HeaderMenu>
 

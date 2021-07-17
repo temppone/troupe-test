@@ -4,7 +4,7 @@ import { SwitchContainer, SwitchLabel, SwitchInput } from './styles';
 const Switch = () => {
   return (
     <SwitchContainer>
-      <SwitchInput id="checkbox" type="checkbox" />
+      <SwitchInput id="checkbox" type="checkbox"  />
       <SwitchLabel htmlFor="checkbox" />
     </SwitchContainer>
   );

@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
 
 import { FooterItem } from './styles';
 import { FlexContainer } from '../../shared/flexContainer';
-import { UserContext } from '../../UserContext';
+import { useUserContext } from '../../UserContext';
 import Button from '../Button';
 
 const Footer = () => {
-  const { loggedIn, userLogout } = useContext(UserContext);
+  const { loggedIn, userLogout } = useUserContext();
 
   return (
     <FlexContainer

@@ -25,9 +25,14 @@ export const HeaderMenu = styled.ul`
   flex-direction: rows;
   align-items: center;
   font-size: 1.4rem;
-  
 `;
+
 export const HeaderMenuItem = styled.li`
+  display: flex;
+  :nth-child(3) {
+    padding: 1rem;
+  }
+
   a {
     padding: 1.4rem;
   }

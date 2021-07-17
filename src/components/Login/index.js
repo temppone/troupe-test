@@ -1,18 +1,18 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import * as yup from 'yup';
 import { ptForm } from 'yup-locale-pt';
 import { FlexContainer, PageTitle } from '../../shared/flexContainer';
-import { UserContext } from '../../UserContext';
+import { useUserContext } from '../../UserContext';
 import Button from '../Button';
 import Input from '../Input';
 import { LoginForm, LoginGreeting, LoginHeader } from './styles';
 
 const Login = () => {
   const [disabledButton, setDisabledButton] = useState(false);
-  const { userLogin } = useContext(UserContext);
+  const { userLogin } = useUserContext();
 
   yup.setLocale(ptForm);
 
@@ -43,6 +43,7 @@ const Login = () => {
           },
           error: (err) => {
             setDisabledButton(false);
+            
             return err.toString();
           },
         },
