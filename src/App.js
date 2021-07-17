@@ -25,7 +25,7 @@ function App() {
         <ThemeProvider
           theme={{
             colors:
-              actualTheme === 'light' ? lightTheme.colors : darkTheme.colors,
+              actualTheme === 'dark' ? lightTheme.colors : darkTheme.colors,
             ...defaultTheme,
           }}
         >

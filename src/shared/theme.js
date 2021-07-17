@@ -48,13 +48,13 @@ export const darkTheme = {
 
 export const lightTheme = {
   colors: {
-    primaryDark: '#141414',
-    secundaryDark: '#262626',
-    tertiaryDark: '#4c4c4c',
+    primaryDark: '#ffffff',
+    secundaryDark: '#e6e6e6',
+    tertiaryDark: '#d8d8d8',
 
-    primaryLight: '#ffffff',
-    secundaryLight: '#e6e6e6',
-    tertiaryLight: '#d8d8d8',
+    primaryLight: '#141414',
+    secundaryLight: '#262626',
+    tertiaryLight: '#4c4c4c',
 
     contrast: '#FAC43F',
 
